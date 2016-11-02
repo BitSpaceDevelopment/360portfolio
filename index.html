@@ -16,26 +16,16 @@
     <a-scene>
       <a-assets>
 
-        <!-- Placeholder Panos -->
-        <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
-        <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
-        <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
-        
-        <!-- Placeholder Thumbs -->
-        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-        <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
-        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
-        
         <!-- Bit Space Panos -->
-        <img id="symphonie1" crossorigin="anonymous" src="./img/panos/symphonie1.jpg">
-        <img id="symphonie2" crossorigin="anonymous" src="./img/panos/symphonie2.JPG">
-        <img id="engagement" crossorigin="anonymous" src="./img/panos/engagement.jpg">
-        <img id="stn" crossorigin="anonymous" src="./img/panos/stn.jpg">
-        <img id="rrcbridge" crossorigin="anonymous" src="./img/panos/rrcbridge.JPG">
-        <img id="pool" crossorigin="anonymous" src="./img/panos/pool.jpg">
         <img id="ex1" crossorigin="anonymous" src="./img/panos/ex1.jpg">
         <img id="ex2" crossorigin="anonymous" src="./img/panos/ex2.jpg">
         <img id="ex3" crossorigin="anonymous" src="./img/panos/ex3.jpg">
+        <img id="engagement" crossorigin="anonymous" src="./img/panos/engagement.jpg">
+        <img id="symphonie1" crossorigin="anonymous" src="./img/panos/symphonie1.jpg">
+        <img id="symphonie2" crossorigin="anonymous" src="./img/panos/symphonie2.JPG">
+        <img id="stn" crossorigin="anonymous" src="./img/panos/stn.jpg">
+        <img id="rrcbridge" crossorigin="anonymous" src="./img/panos/rrcbridge.JPG">
+        <img id="pool" crossorigin="anonymous" src="./img/panos/pool.jpg">
         <img id="xmasbar" crossorigin="anonymous" src="./img/panos/xmasbar.JPG">
         <img id="toolroom" crossorigin="anonymous" src="./img/panos/toolroom.jpg">
         <img id="fifth" crossorigin="anonymous" src="./img/panos/fifth.jpg">
@@ -44,6 +34,15 @@
         <img id="ex1-thumb" crossorigin="anonymous" src="./img/thumbs/ex1-thumb.jpg">
         <img id="ex2-thumb" crossorigin="anonymous" src="./img/thumbs/ex2-thumb.jpg">
         <img id="ex3-thumb" crossorigin="anonymous" src="./img/thumbs/ex3-thumb.jpg">
+        <img id="engagement-thumb" crossorigin="anonymous" src="./img/thumbs/engagement-thumb.jpg">
+        <img id="symphonie1-thumb" crossorigin="anonymous" src="./img/thumbs/symphonie1-thumb.jpg">
+        <img id="symphonie2-thumb" crossorigin="anonymous" src="./img/thumbs/symphonie2-thumb.jpg">
+        <img id="stn-thumb" crossorigin="anonymous" src="./img/thumbs/stn-thumb.jpg">
+        <img id="rrcbridge-thumb" crossorigin="anonymous" src="./img/thumbs/rrcbridge-thumb.jpg">
+        <img id="toolroom-thumb" crossorigin="anonymous" src="./img/thumbs/toolroom-thumb.jpg">
+        <img id="fifth-thumb" crossorigin="anonymous" src="./img/thumbs/fifth-thumb.jpg">
+        <img id="xmasbar-thumb" crossorigin="anonymous" src="./img/thumbs/xmasbar-thumb.jpg">
+        <img id="pool-thumb" crossorigin="anonymous" src="./img/thumbs/pool-thumb.jpg">
         
         <!-- Audio Assets -->
         <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
@@ -71,15 +70,15 @@
         <a-entity template="src: #link" data-src="#ex2" data-thumb="#ex1-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#ex1" data-thumb="#ex2-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#ex3" data-thumb="#ex3-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#engagement" data-thumb="#sechelt-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#stn" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#rrcbridge" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#pool" data-thumb="#sechelt-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#xmasbar" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#toolroom" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#pool" data-thumb="#sechelt-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#symphonie1-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#symphonie2-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#engagement" data-thumb="#engagement-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#stn" data-thumb="#stn-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#rrcbridge" data-thumb="#rrcbridge-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#pool" data-thumb="#pool-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#xmasbar" data-thumb="#xmasbar-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#toolroom" data-thumb="#toolroom-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#fifth" data-thumb="#fifth-thumb"></a-entity>
       </a-entity>
 
       <!-- Camera + cursor. -->

@@ -41,7 +41,10 @@
         <img id="fifth" crossorigin="anonymous" src="./img/fifth.jpg">
 
         <!-- Bit Space Thumbs -->
-
+        <img id="ex1-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+        <img id="ex2-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
+        <img id="ex3-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+        
         <!-- Audio Assets -->
         <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
   
@@ -61,13 +64,22 @@
       
 
       <!-- 360-degree image. -->
-      <a-sky id="image-360" radius="10" src="#ex1"></a-sky>
+      <a-sky id="image-360" radius="10" src="#symphonie1"></a-sky>
 
       <!-- Image links. -->
       <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+        <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#engagement" data-thumb="#sechelt-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#stn" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#rrcbridge" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#pool" data-thumb="#sechelt-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#ex2" data-thumb="#cubes-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#ex1" data-thumb="#city-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#ex3" data-thumb="#sechelt-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#xmasbar" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#toolroom" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#pool" data-thumb="#sechelt-thumb"></a-entity>
       </a-entity>
 
       <!-- Camera + cursor. -->

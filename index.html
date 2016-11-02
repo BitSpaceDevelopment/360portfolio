@@ -36,14 +36,14 @@
         <img id="ex1" crossorigin="anonymous" src="./img/ex1.jpg">
         <img id="ex2" crossorigin="anonymous" src="./img/ex2.jpg">
         <img id="ex3" crossorigin="anonymous" src="./img/ex3.jpg">
-        <img id="xmasbar" crossorigin="anonymous" src="./img/xmasbar.jpg">
+        <img id="xmasbar" crossorigin="anonymous" src="./img/xmasbar.JPG">
         <img id="toolroom" crossorigin="anonymous" src="./img/toolroom.jpg">
         <img id="fifth" crossorigin="anonymous" src="./img/fifth.jpg">
 
         <!-- Bit Space Thumbs -->
-        <img id="ex1-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-        <img id="ex2-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
-        <img id="ex3-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+        <img id="ex1-thumb" crossorigin="anonymous" src="./img/thumbs/ex1-thumb.jpg">
+        <img id="ex2-thumb" crossorigin="anonymous" src="./img/thumbs/ex2-thumb.jpg">
+        <img id="ex3-thumb" crossorigin="anonymous" src="./img/thumbs/ex3-thumb.jpg">
         
         <!-- Audio Assets -->
         <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
@@ -68,15 +68,15 @@
 
       <!-- Image links. -->
       <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+        <a-entity template="src: #link" data-src="#ex2" data-thumb="#ex1-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#ex1" data-thumb="#ex2-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#ex3" data-thumb="#ex3-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#cubes-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#city-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#engagement" data-thumb="#sechelt-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#stn" data-thumb="#cubes-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#rrcbridge" data-thumb="#city-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#pool" data-thumb="#sechelt-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#ex2" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#ex1" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#ex3" data-thumb="#sechelt-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#xmasbar" data-thumb="#cubes-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#toolroom" data-thumb="#city-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#pool" data-thumb="#sechelt-thumb"></a-entity>

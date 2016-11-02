@@ -16,6 +16,9 @@
     <a-scene>
       <a-assets>
 
+        <!-- Misc -->
+        <img id="logo" crossorigin="anonymous" src="./img/bsdlogo.png">
+
         <!-- Bit Space Panos -->
         <img id="ex1" crossorigin="anonymous" src="./img/panos/ex1.jpg">
         <img id="ex2" crossorigin="anonymous" src="./img/panos/ex2.jpg">
@@ -45,7 +48,7 @@
         <img id="pool-thumb" crossorigin="anonymous" src="./img/thumbs/pool-thumb.jpg">
         
         <!-- Audio Assets -->
-        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <audio id="click-sound" crossorigin="anonymous" src="./audio/click.ogg"></audio>
   
         <!-- Image link template to be reused. -->
         <script id="link" type="text/nunjucks">
@@ -66,7 +69,7 @@
       <a-sky id="image-360" radius="10" src="#symphonie1"></a-sky>
 
       <!-- Image links. -->
-      <a-entity id="links" layout="type: box; margin: 1.5; column: 3" position="0 -1 -4">
+      <a-entity id="links" layout="type: box; column: 3; margin: 1.5" position="0 -1 -4">
         <a-entity template="src: #link" data-src="#ex2" data-thumb="#ex1-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#ex1" data-thumb="#ex2-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#ex3" data-thumb="#ex3-thumb"></a-entity>
@@ -80,6 +83,9 @@
         <a-entity template="src: #link" data-src="#toolroom" data-thumb="#toolroom-thumb"></a-entity>
         <a-entity template="src: #link" data-src="#fifth" data-thumb="#fifth-thumb"></a-entity>
       </a-entity>
+
+      <!-- Misc Images -->
+      <a-image src="#my-image"></a-image>
 
       <!-- Camera + cursor. -->
       <a-entity camera look-controls>

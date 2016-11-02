@@ -1,3 +1,4 @@
+<img src="./img/panos/symphonie1.jpg" />
 # Bit Space Development 360 Portfolio
 
 At BSD we develop high quality and engaging expereinces. These are some of our favorite experiences working with our clients. All images are copyright of their respective owners and are being used only for the express purpose of showing our work.

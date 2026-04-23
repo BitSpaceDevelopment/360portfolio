@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>BSD XR — 360 PORTFOLIO</title>
-    <meta name="description" content="BSD XR 360 Portfolio">
+    <meta name="description" content="BSD XR 360 Portfolio — Immersive experiences by Bit Space Development">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -36,21 +36,22 @@
         height: 48px;
         background: #0a0a0a;
         border-bottom: 1px solid #222222;
-        pointer-events: none;
       }
 
-      #ui-header .brand {
+      .brand {
         display: flex;
         align-items: center;
         gap: 16px;
+        text-decoration: none;
+        color: inherit;
       }
 
-      #ui-header img {
+      .brand img {
         height: 20px;
         width: auto;
       }
 
-      #ui-header .label {
+      .brand .label {
         font-size: 11px;
         font-weight: 700;
         letter-spacing: 0.2em;
@@ -58,17 +59,47 @@
         color: #e5e5e5;
       }
 
-      #ui-header .divider {
+      .brand .divider {
         width: 1px;
         height: 20px;
         background: #222222;
       }
 
-      #ui-header .tag {
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .nav-link {
+        font-family: 'Space Mono', monospace;
         font-size: 10px;
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: #555555;
+        text-decoration: none;
+        transition: color 0.1s;
+      }
+
+      .nav-link:hover { color: #e5e5e5; }
+
+      .cta-button {
+        font-family: 'Space Mono', monospace;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #000000;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        padding: 9px 20px;
+        text-decoration: none;
+        transition: background 0.1s, color 0.1s;
+      }
+
+      .cta-button:hover {
+        background: transparent;
+        color: #ffffff;
       }
 
       #ui-footer {
@@ -85,14 +116,7 @@
         pointer-events: none;
       }
 
-      #ui-footer .hint {
-        font-size: 10px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #444444;
-      }
-
-      #ui-footer .count {
+      #ui-footer span {
         font-size: 10px;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -110,53 +134,56 @@
   <body>
 
     <div id="ui-header">
-      <div class="brand">
+      <a href="https://bsdxr.com" target="_blank" class="brand">
         <img src="./branding/logo-dark.png" alt="BSD XR">
         <div class="divider"></div>
         <span class="label">360 Portfolio</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://bsdxr.com" target="_blank" class="nav-link">bsdxr.com</a>
+        <a href="https://bsdxr.com" target="_blank" class="cta-button">Book a Demo</a>
       </div>
-      <span class="tag">Look around — click to explore</span>
     </div>
 
     <a-scene>
       <a-assets>
 
         <!-- Bit Space Panos -->
-        <img id="ex1" crossorigin="anonymous" src="./img/panos/ex1.jpg">
-        <img id="ex2" crossorigin="anonymous" src="./img/panos/ex2.jpg">
-        <img id="ex3" crossorigin="anonymous" src="./img/panos/ex3.jpg">
+        <img id="ex1"        crossorigin="anonymous" src="./img/panos/ex1.jpg">
+        <img id="ex2"        crossorigin="anonymous" src="./img/panos/ex2.jpg">
+        <img id="ex3"        crossorigin="anonymous" src="./img/panos/ex3.jpg">
         <img id="engagement" crossorigin="anonymous" src="./img/panos/engagement.jpg">
         <img id="symphonie1" crossorigin="anonymous" src="./img/panos/symphonie1.jpg">
         <img id="symphonie2" crossorigin="anonymous" src="./img/panos/symphonie2.JPG">
-        <img id="stn" crossorigin="anonymous" src="./img/panos/stn.jpg">
-        <img id="rrcbridge" crossorigin="anonymous" src="./img/panos/rrcbridge.JPG">
-        <img id="fifth" crossorigin="anonymous" src="./img/panos/fifth.JPG">
-        <img id="xmasbar" crossorigin="anonymous" src="./img/panos/xmasbar.JPG">
-        <img id="toolroom" crossorigin="anonymous" src="./img/panos/toolroom.jpg">
+        <img id="stn"        crossorigin="anonymous" src="./img/panos/stn.jpg">
+        <img id="rrcbridge"  crossorigin="anonymous" src="./img/panos/rrcbridge.JPG">
+        <img id="xmasbar"    crossorigin="anonymous" src="./img/panos/xmasbar.JPG">
+        <img id="toolroom"   crossorigin="anonymous" src="./img/panos/toolroom.jpg">
+        <img id="fifth"      crossorigin="anonymous" src="./img/panos/fifth.JPG">
 
         <!-- Bit Space Thumbs -->
-        <img id="ex1-thumb" crossorigin="anonymous" src="./img/thumbs/ex1-thumb.jpg">
-        <img id="ex2-thumb" crossorigin="anonymous" src="./img/thumbs/ex2-thumb.jpg">
-        <img id="ex3-thumb" crossorigin="anonymous" src="./img/thumbs/ex3-thumb.jpg">
+        <img id="ex1-thumb"        crossorigin="anonymous" src="./img/thumbs/ex1-thumb.jpg">
+        <img id="ex2-thumb"        crossorigin="anonymous" src="./img/thumbs/ex2-thumb.jpg">
+        <img id="ex3-thumb"        crossorigin="anonymous" src="./img/thumbs/ex3-thumb.jpg">
         <img id="engagement-thumb" crossorigin="anonymous" src="./img/thumbs/engagement-thumb.jpg">
         <img id="symphonie1-thumb" crossorigin="anonymous" src="./img/thumbs/symphonie1-thumb.jpg">
         <img id="symphonie2-thumb" crossorigin="anonymous" src="./img/thumbs/symphonie2-thumb.jpg">
-        <img id="stn-thumb" crossorigin="anonymous" src="./img/thumbs/stn-thumb.jpg">
-        <img id="rrcbridge-thumb" crossorigin="anonymous" src="./img/thumbs/rrcbridge-thumb.JPG">
-        <img id="toolroom-thumb" crossorigin="anonymous" src="./img/thumbs/toolroom-thumb.jpg">
-        <img id="xmasbar-thumb" crossorigin="anonymous" src="./img/thumbs/xmasbar-thumb.jpg">
-        <img id="fifth-thumb" crossorigin="anonymous" src="./img/thumbs/fifth-thumb.jpg">
+        <img id="stn-thumb"        crossorigin="anonymous" src="./img/thumbs/stn-thumb.jpg">
+        <img id="rrcbridge-thumb"  crossorigin="anonymous" src="./img/thumbs/rrcbridge-thumb.JPG">
+        <img id="toolroom-thumb"   crossorigin="anonymous" src="./img/thumbs/toolroom-thumb.jpg">
+        <img id="xmasbar-thumb"    crossorigin="anonymous" src="./img/thumbs/xmasbar-thumb.jpg">
+        <img id="fifth-thumb"      crossorigin="anonymous" src="./img/thumbs/fifth-thumb.jpg">
 
-        <!-- Audio Assets -->
+        <!-- Audio -->
         <audio id="click-sound" crossorigin="anonymous" src="./audio/click.ogg"></audio>
 
-        <!-- Image link template to be reused. -->
+        <!-- Thumbnail link template -->
         <script id="link" type="text/nunjucks">
-          <a-plane class="link" height="1" width="1"
+          <a-plane class="link" height="0.8" width="0.8"
             material="shader: flat; src: {{ thumb }}"
             event-set__1="_event: mousedown; scale: 1 1 1"
-            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
-            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__2="_event: mouseup; scale: 1.15 1.15 1"
+            event-set__3="_event: mouseenter; scale: 1.15 1.15 1"
             event-set__4="_event: mouseleave; scale: 1 1 1"
             set-image="on: click; target: #image-360; src: {{ src }}"
             sound="on: click; src: #click-sound"
@@ -164,31 +191,72 @@
         </script>
       </a-assets>
 
-      <!-- 360-degree image. -->
+      <!-- 360-degree image -->
       <a-sky id="image-360" radius="10" src="#symphonie1"></a-sky>
 
-      <!-- Image link groups. -->
-      <a-entity id="links" layout="type: box; column: 3; margin: 1.5" position="-2 -1 -4">
-        <a-entity template="src: #link" data-src="#ex2" data-thumb="#ex1-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#ex1" data-thumb="#ex2-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#ex3" data-thumb="#ex3-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#symphonie1-thumb"></a-entity>
+      <!--
+        Thumbnails arranged in a curved arc at radius 4, y=-1.
+        Angles span -55° to +55° in 11° steps, each panel faces the centre.
+      -->
+      <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#symphonie1-thumb" position="-3.28 -1.0 -2.30" rotation="0 -55 0"></a-entity>
+      <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#symphonie2-thumb" position="-2.78 -1.0 -2.88" rotation="0 -44 0"></a-entity>
+      <a-entity template="src: #link" data-src="#engagement" data-thumb="#engagement-thumb" position="-2.18 -1.0 -3.35" rotation="0 -33 0"></a-entity>
+      <a-entity template="src: #link" data-src="#stn"        data-thumb="#stn-thumb"        position="-1.50 -1.0 -3.71" rotation="0 -22 0"></a-entity>
+      <a-entity template="src: #link" data-src="#rrcbridge"  data-thumb="#rrcbridge-thumb"  position="-0.76 -1.0 -3.93" rotation="0 -11 0"></a-entity>
+      <a-entity template="src: #link" data-src="#ex1"        data-thumb="#ex1-thumb"        position=" 0.00 -1.0 -4.00" rotation="0   0 0"></a-entity>
+      <a-entity template="src: #link" data-src="#ex2"        data-thumb="#ex2-thumb"        position=" 0.76 -1.0 -3.93" rotation="0  11 0"></a-entity>
+      <a-entity template="src: #link" data-src="#ex3"        data-thumb="#ex3-thumb"        position=" 1.50 -1.0 -3.71" rotation="0  22 0"></a-entity>
+      <a-entity template="src: #link" data-src="#xmasbar"    data-thumb="#xmasbar-thumb"    position=" 2.18 -1.0 -3.35" rotation="0  33 0"></a-entity>
+      <a-entity template="src: #link" data-src="#toolroom"   data-thumb="#toolroom-thumb"   position=" 2.78 -1.0 -2.88" rotation="0  44 0"></a-entity>
+      <a-entity template="src: #link" data-src="#fifth"      data-thumb="#fifth-thumb"      position=" 3.28 -1.0 -2.30" rotation="0  55 0"></a-entity>
+
+      <!-- BSD XR info hotspot — floats above the thumbnail arc -->
+      <a-entity id="info-panel" position="0 1.5 -4.2">
+        <!-- Border layer -->
+        <a-plane material="shader: flat; color: #222222" width="2.82" height="1.62" position="0 0 -0.02"></a-plane>
+        <!-- Background -->
+        <a-plane material="shader: flat; color: #0a0a0a" width="2.8"  height="1.6"  position="0 0 -0.01"></a-plane>
+        <!-- Blue accent bar -->
+        <a-plane material="shader: flat; color: #1b4fd8" width="2.8"  height="0.04" position="0 0.78 0"></a-plane>
+
+        <!-- Company name -->
+        <a-text value="BSD XR"
+          color="#ffffff" align="left" letter-spacing="5"
+          width="2.6" position="-1.25 0.52 0.01"></a-text>
+
+        <!-- Tagline -->
+        <a-text value="IMMERSIVE XR EXPERIENCES"
+          color="#777777" align="left"
+          width="2.6" position="-1.25 0.22 0.01"></a-text>
+
+        <!-- Location -->
+        <a-text value="WINNIPEG, MB  —  EST. 2015"
+          color="#444444" align="left"
+          width="2.6" position="-1.25 0.01 0.01"></a-text>
+
+        <!-- Rule -->
+        <a-plane material="shader: flat; color: #222222" width="2.6" height="0.01" position="0 -0.18 0.01"></a-plane>
+
+        <!-- CTA copy -->
+        <a-text value="READY TO BUILD SOMETHING IMMERSIVE?"
+          color="#555555" align="left"
+          width="2.6" position="-1.25 -0.35 0.01"></a-text>
+
+        <!-- Book a Demo button (clickable plane + label) -->
+        <a-entity position="0 -0.6 0.01">
+          <a-plane class="hotspot" id="book-demo-3d"
+            material="shader: flat; color: #ffffff"
+            width="2.0" height="0.32"
+            event-set__1="_event: mouseenter; scale: 1.04 1.04 1"
+            event-set__2="_event: mouseleave; scale: 1 1 1">
+          </a-plane>
+          <a-text value="BOOK A DEMO  →"
+            color="#000000" align="center"
+            width="3" position="0 0 0.01"></a-text>
+        </a-entity>
       </a-entity>
 
-      <a-entity id="links2" layout="type: box; column: 3; margin: 1.5" position="0 -1 -4">
-        <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#symphonie2-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#engagement" data-thumb="#engagement-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#stn" data-thumb="#stn-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#rrcbridge" data-thumb="#rrcbridge-thumb"></a-entity>
-      </a-entity>
-
-      <a-entity id="links3" layout="type: box; column: 3; margin: 1.5" position="2 -1 -4">
-        <a-entity template="src: #link" data-src="#fifth" data-thumb="#fifth-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#xmasbar" data-thumb="#xmasbar-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#toolroom" data-thumb="#toolroom-thumb"></a-entity>
-      </a-entity>
-
-      <!-- Camera + cursor. -->
+      <!-- Camera + cursor -->
       <a-entity camera look-controls>
         <a-cursor id="cursor"
           animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
@@ -196,14 +264,22 @@
           event-set__1="_event: mouseenter; color: white"
           event-set__2="_event: mouseleave; color: #555555"
           color="#555555"
-          raycaster="objects: .link"></a-cursor>
+          raycaster="objects: .link, .hotspot"></a-cursor>
       </a-entity>
     </a-scene>
 
     <div id="ui-footer">
-      <span class="hint">Click a thumbnail to load — drag to look around</span>
-      <span class="count">11 environments</span>
+      <span>Click a thumbnail — drag to look around</span>
+      <span>11 environments</span>
     </div>
+
+    <script>
+      document.querySelector('a-scene').addEventListener('loaded', function () {
+        document.querySelector('#book-demo-3d').addEventListener('click', function () {
+          window.open('https://bsdxr.com', '_blank');
+        });
+      });
+    </script>
 
   </body>
 </html>

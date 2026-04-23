@@ -25,6 +25,7 @@
         z-index: 0;
       }
 
+      /* ── Header ── */
       #ui-header {
         position: fixed;
         top: 0; left: 0; right: 0;
@@ -45,12 +46,7 @@
         text-decoration: none;
         color: inherit;
       }
-
-      .brand img {
-        height: 20px;
-        width: auto;
-      }
-
+      .brand img { height: 20px; width: auto; }
       .brand .label {
         font-size: 11px;
         font-weight: 700;
@@ -58,18 +54,9 @@
         text-transform: uppercase;
         color: #e5e5e5;
       }
+      .brand .divider { width: 1px; height: 20px; background: #222222; }
 
-      .brand .divider {
-        width: 1px;
-        height: 20px;
-        background: #222222;
-      }
-
-      .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-      }
+      .header-actions { display: flex; align-items: center; gap: 20px; }
 
       .nav-link {
         font-family: 'Space Mono', monospace;
@@ -78,9 +65,11 @@
         text-transform: uppercase;
         color: #555555;
         text-decoration: none;
+        background: none;
+        border: none;
+        cursor: pointer;
         transition: color 0.1s;
       }
-
       .nav-link:hover { color: #e5e5e5; }
 
       .cta-button {
@@ -95,13 +84,11 @@
         padding: 9px 20px;
         text-decoration: none;
         transition: background 0.1s, color 0.1s;
+        cursor: pointer;
       }
+      .cta-button:hover { background: transparent; color: #ffffff; }
 
-      .cta-button:hover {
-        background: transparent;
-        color: #ffffff;
-      }
-
+      /* ── Footer ── */
       #ui-footer {
         position: fixed;
         bottom: 0; left: 0; right: 0;
@@ -115,14 +102,119 @@
         border-top: 1px solid #222222;
         pointer-events: none;
       }
-
       #ui-footer span {
         font-size: 10px;
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: #444444;
       }
+
+      /* ── Modal ── */
+      #modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(10, 10, 10, 0.9);
+        align-items: center;
+        justify-content: center;
+      }
+      #modal-overlay.open { display: flex; }
+
+      #modal {
+        background: #111111;
+        border: 1px solid #222222;
+        width: 100%;
+        max-width: 580px;
+        margin: 0 24px;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        border-bottom: 1px solid #222222;
+      }
+      .modal-title {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #e5e5e5;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        color: #555555;
+        font-family: 'Space Mono', monospace;
+        font-size: 14px;
+        cursor: pointer;
+        padding: 2px 6px;
+        transition: color 0.1s;
+      }
+      .modal-close:hover { color: #e5e5e5; }
+
+      .modal-body { padding: 32px 24px 24px; }
+
+      .modal-section { margin-bottom: 28px; }
+      .modal-section:last-child { margin-bottom: 0; }
+
+      .modal-eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #555555;
+        margin-bottom: 10px;
+      }
+      .modal-lead {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #e5e5e5;
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+      .modal-body p {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        color: #777777;
+        line-height: 1.9;
+      }
+
+      .modal-rule {
+        border: none;
+        border-top: 1px solid #222222;
+        margin: 24px 0;
+      }
+
+      .modal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .modal-tag {
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #555555;
+        border: 1px solid #333333;
+        padding: 5px 12px;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .modal-actions .cta-button { font-size: 10px; padding: 9px 20px; }
+      .modal-actions .nav-link   { font-size: 10px; }
     </style>
+
     <script src="./js/aframe.min.js"></script>
     <script src="./js/aframe-animation-component.js"></script>
     <script src="./js/aframe-event-set-component.js"></script>
@@ -130,9 +222,40 @@
     <script src="./js/aframe-template-component.js"></script>
     <script src="components/set-image.js"></script>
     <script src="components/update-raycaster.js"></script>
+
+    <script>
+      /* Subtle mouse parallax on the camera rig — desktop only, pauses on drag */
+      AFRAME.registerComponent('mouse-parallax', {
+        init: function () {
+          this.mouseX  = 0; this.mouseY  = 0;
+          this.smoothX = 0; this.smoothY = 0;
+          this.dragging = false;
+          this.isVR = false;
+          var self = this;
+          document.addEventListener('mousemove', function (e) {
+            self.mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+            self.mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+          });
+          document.addEventListener('mousedown', function () { self.dragging = true;  });
+          document.addEventListener('mouseup',   function () { self.dragging = false; });
+          this.el.sceneEl.addEventListener('enter-vr', function () { self.isVR = true;  });
+          this.el.sceneEl.addEventListener('exit-vr',  function () { self.isVR = false; });
+        },
+        tick: function () {
+          if (this.isVR || this.dragging) return;
+          var t = 0.018;
+          this.smoothX += (this.mouseX - this.smoothX) * t;
+          this.smoothY += (this.mouseY - this.smoothY) * t;
+          var DEG = Math.PI / 180;
+          this.el.object3D.rotation.y = this.smoothX * -7 * DEG;
+          this.el.object3D.rotation.x = this.smoothY *  3 * DEG;
+        }
+      });
+    </script>
   </head>
   <body>
 
+    <!-- ── Header ── -->
     <div id="ui-header">
       <a href="https://bsdxr.com" target="_blank" class="brand">
         <img src="./branding/logo-dark.png" alt="BSD XR">
@@ -140,15 +263,17 @@
         <span class="label">360 Portfolio</span>
       </a>
       <div class="header-actions">
+        <button class="nav-link" id="about-trigger">About BSD XR</button>
         <a href="https://bsdxr.com" target="_blank" class="nav-link">bsdxr.com</a>
         <a href="https://bsdxr.com" target="_blank" class="cta-button">Book a Demo</a>
       </div>
     </div>
 
+    <!-- ── Scene ── -->
     <a-scene>
       <a-assets>
 
-        <!-- Bit Space Panos -->
+        <!-- Panos -->
         <img id="ex1"        crossorigin="anonymous" src="./img/panos/ex1.jpg">
         <img id="ex2"        crossorigin="anonymous" src="./img/panos/ex2.jpg">
         <img id="ex3"        crossorigin="anonymous" src="./img/panos/ex3.jpg">
@@ -161,7 +286,7 @@
         <img id="toolroom"   crossorigin="anonymous" src="./img/panos/toolroom.jpg">
         <img id="fifth"      crossorigin="anonymous" src="./img/panos/fifth.JPG">
 
-        <!-- Bit Space Thumbs -->
+        <!-- Thumbs -->
         <img id="ex1-thumb"        crossorigin="anonymous" src="./img/thumbs/ex1-thumb.jpg">
         <img id="ex2-thumb"        crossorigin="anonymous" src="./img/thumbs/ex2-thumb.jpg">
         <img id="ex3-thumb"        crossorigin="anonymous" src="./img/thumbs/ex3-thumb.jpg">
@@ -177,13 +302,13 @@
         <!-- Audio -->
         <audio id="click-sound" crossorigin="anonymous" src="./audio/click.ogg"></audio>
 
-        <!-- Thumbnail link template -->
+        <!-- Thumbnail template -->
         <script id="link" type="text/nunjucks">
-          <a-plane class="link" height="0.8" width="0.8"
+          <a-plane class="link" height="0.9" width="0.9"
             material="shader: flat; src: {{ thumb }}"
             event-set__1="_event: mousedown; scale: 1 1 1"
-            event-set__2="_event: mouseup; scale: 1.15 1.15 1"
-            event-set__3="_event: mouseenter; scale: 1.15 1.15 1"
+            event-set__2="_event: mouseup; scale: 1.12 1.12 1"
+            event-set__3="_event: mouseenter; scale: 1.12 1.12 1"
             event-set__4="_event: mouseleave; scale: 1 1 1"
             set-image="on: click; target: #image-360; src: {{ src }}"
             sound="on: click; src: #click-sound"
@@ -191,93 +316,131 @@
         </script>
       </a-assets>
 
-      <!-- 360-degree image -->
+      <!-- 360 sky -->
       <a-sky id="image-360" radius="10" src="#symphonie1"></a-sky>
 
       <!--
-        Thumbnails arranged in a curved arc at radius 4, y=-1.
-        Angles span -55° to +55° in 11° steps, each panel faces the centre.
+        4-column grid, 0.9 thumbnails, 1.8 cell pitch.
+        Cols centred: x = -2.7 / -0.9 / +0.9 / +2.7
+        Row 1 at y=1.6 (eye level), rows spaced 1.8 apart.
+        Last row (3 items) centred: x = -1.8 / 0 / +1.8
       -->
-      <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#symphonie1-thumb" position="-3.28 -1.0 -2.30" rotation="0 -55 0"></a-entity>
-      <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#symphonie2-thumb" position="-2.78 -1.0 -2.88" rotation="0 -44 0"></a-entity>
-      <a-entity template="src: #link" data-src="#engagement" data-thumb="#engagement-thumb" position="-2.18 -1.0 -3.35" rotation="0 -33 0"></a-entity>
-      <a-entity template="src: #link" data-src="#stn"        data-thumb="#stn-thumb"        position="-1.50 -1.0 -3.71" rotation="0 -22 0"></a-entity>
-      <a-entity template="src: #link" data-src="#rrcbridge"  data-thumb="#rrcbridge-thumb"  position="-0.76 -1.0 -3.93" rotation="0 -11 0"></a-entity>
-      <a-entity template="src: #link" data-src="#ex1"        data-thumb="#ex1-thumb"        position=" 0.00 -1.0 -4.00" rotation="0   0 0"></a-entity>
-      <a-entity template="src: #link" data-src="#ex2"        data-thumb="#ex2-thumb"        position=" 0.76 -1.0 -3.93" rotation="0  11 0"></a-entity>
-      <a-entity template="src: #link" data-src="#ex3"        data-thumb="#ex3-thumb"        position=" 1.50 -1.0 -3.71" rotation="0  22 0"></a-entity>
-      <a-entity template="src: #link" data-src="#xmasbar"    data-thumb="#xmasbar-thumb"    position=" 2.18 -1.0 -3.35" rotation="0  33 0"></a-entity>
-      <a-entity template="src: #link" data-src="#toolroom"   data-thumb="#toolroom-thumb"   position=" 2.78 -1.0 -2.88" rotation="0  44 0"></a-entity>
-      <a-entity template="src: #link" data-src="#fifth"      data-thumb="#fifth-thumb"      position=" 3.28 -1.0 -2.30" rotation="0  55 0"></a-entity>
+      <!-- Row 1 -->
+      <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#symphonie1-thumb" position="-2.7 1.6 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#symphonie2-thumb" position="-0.9 1.6 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#engagement" data-thumb="#engagement-thumb" position=" 0.9 1.6 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#stn"        data-thumb="#stn-thumb"        position=" 2.7 1.6 -5"></a-entity>
+      <!-- Row 2 -->
+      <a-entity template="src: #link" data-src="#rrcbridge"  data-thumb="#rrcbridge-thumb"  position="-2.7 -0.2 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#ex1"        data-thumb="#ex1-thumb"        position="-0.9 -0.2 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#ex2"        data-thumb="#ex2-thumb"        position=" 0.9 -0.2 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#ex3"        data-thumb="#ex3-thumb"        position=" 2.7 -0.2 -5"></a-entity>
+      <!-- Row 3 (3 items, centred) -->
+      <a-entity template="src: #link" data-src="#xmasbar"    data-thumb="#xmasbar-thumb"    position="-1.8 -2.0 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#toolroom"   data-thumb="#toolroom-thumb"   position=" 0.0 -2.0 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#fifth"      data-thumb="#fifth-thumb"      position=" 1.8 -2.0 -5"></a-entity>
 
-      <!-- BSD XR info hotspot — floats above the thumbnail arc -->
-      <a-entity id="info-panel" position="0 1.5 -4.2">
-        <!-- Border layer -->
-        <a-plane material="shader: flat; color: #222222" width="2.82" height="1.62" position="0 0 -0.02"></a-plane>
-        <!-- Background -->
-        <a-plane material="shader: flat; color: #0a0a0a" width="2.8"  height="1.6"  position="0 0 -0.01"></a-plane>
-        <!-- Blue accent bar -->
-        <a-plane material="shader: flat; color: #1b4fd8" width="2.8"  height="0.04" position="0 0.78 0"></a-plane>
-
-        <!-- Company name -->
-        <a-text value="BSD XR"
-          color="#ffffff" align="left" letter-spacing="5"
-          width="2.6" position="-1.25 0.52 0.01"></a-text>
-
-        <!-- Tagline -->
-        <a-text value="IMMERSIVE XR EXPERIENCES"
-          color="#777777" align="left"
-          width="2.6" position="-1.25 0.22 0.01"></a-text>
-
-        <!-- Location -->
-        <a-text value="WINNIPEG, MB  —  EST. 2015"
-          color="#444444" align="left"
-          width="2.6" position="-1.25 0.01 0.01"></a-text>
-
-        <!-- Rule -->
-        <a-plane material="shader: flat; color: #222222" width="2.6" height="0.01" position="0 -0.18 0.01"></a-plane>
-
-        <!-- CTA copy -->
-        <a-text value="READY TO BUILD SOMETHING IMMERSIVE?"
-          color="#555555" align="left"
-          width="2.6" position="-1.25 -0.35 0.01"></a-text>
-
-        <!-- Book a Demo button (clickable plane + label) -->
-        <a-entity position="0 -0.6 0.01">
-          <a-plane class="hotspot" id="book-demo-3d"
-            material="shader: flat; color: #ffffff"
-            width="2.0" height="0.32"
-            event-set__1="_event: mouseenter; scale: 1.04 1.04 1"
-            event-set__2="_event: mouseleave; scale: 1 1 1">
-          </a-plane>
-          <a-text value="BOOK A DEMO  →"
-            color="#000000" align="center"
-            width="3" position="0 0 0.01"></a-text>
-        </a-entity>
+      <!-- Mouse cursor for direct clicking (no gaze alignment needed on desktop) -->
+      <a-entity id="mouse-cursor"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .link; far: 100">
       </a-entity>
 
-      <!-- Camera + cursor -->
-      <a-entity camera look-controls>
-        <a-cursor id="cursor"
-          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-          event-set__1="_event: mouseenter; color: white"
-          event-set__2="_event: mouseleave; color: #555555"
-          color="#555555"
-          raycaster="objects: .link, .hotspot"></a-cursor>
+      <!-- Camera rig carries the mouse-parallax drift -->
+      <a-entity id="camera-rig" mouse-parallax>
+        <a-entity camera look-controls>
+          <!-- Gaze cursor for VR -->
+          <a-cursor id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__1="_event: mouseenter; color: white"
+            event-set__2="_event: mouseleave; color: #555555"
+            color="#555555"
+            raycaster="objects: .link"></a-cursor>
+        </a-entity>
       </a-entity>
     </a-scene>
 
+    <!-- ── Footer ── -->
     <div id="ui-footer">
-      <span>Click a thumbnail — drag to look around</span>
+      <span>Click a thumbnail or look &amp; click — drag to explore</span>
       <span>11 environments</span>
     </div>
 
+    <!-- ── About Modal ── -->
+    <div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+      <div id="modal">
+        <div class="modal-header">
+          <span class="modal-title" id="modal-title-text">About BSD XR</span>
+          <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+        </div>
+        <div class="modal-body">
+
+          <div class="modal-section">
+            <div class="modal-eyebrow">Who we are</div>
+            <div class="modal-lead">We build what's next.</div>
+            <p>
+              Bit Space Development Ltd. is a Winnipeg-based immersive technology studio.
+              Since 2015 we've been designing and building XR experiences for enterprise,
+              education, and entertainment — from 360° virtual tours to full mixed-reality
+              training simulations.
+            </p>
+          </div>
+
+          <hr class="modal-rule">
+
+          <div class="modal-section">
+            <div class="modal-eyebrow">What we build</div>
+            <div class="modal-tags">
+              <span class="modal-tag">360 Experiences</span>
+              <span class="modal-tag">AR / VR Apps</span>
+              <span class="modal-tag">Training Simulations</span>
+              <span class="modal-tag">Product Visualization</span>
+              <span class="modal-tag">Interactive Installations</span>
+            </div>
+          </div>
+
+          <hr class="modal-rule">
+
+          <div class="modal-section">
+            <div class="modal-eyebrow">Work with us</div>
+            <p>
+              Whether you're exploring what's possible or ready to build —
+              we want to hear about your project.
+            </p>
+            <div class="modal-actions">
+              <a href="https://bsdxr.com" target="_blank" class="cta-button">Book a Demo</a>
+              <a href="https://bsdxr.com" target="_blank" class="nav-link">Visit bsdxr.com →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <script>
+      /* Modal open / close */
+      var overlay = document.getElementById('modal-overlay');
+
+      document.getElementById('about-trigger').addEventListener('click', function () {
+        overlay.classList.add('open');
+      });
+      document.getElementById('modal-close').addEventListener('click', function () {
+        overlay.classList.remove('open');
+      });
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) overlay.classList.remove('open');
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') overlay.classList.remove('open');
+      });
+
+      /* Refresh mouse-cursor raycaster after templates finish rendering */
       document.querySelector('a-scene').addEventListener('loaded', function () {
-        document.querySelector('#book-demo-3d').addEventListener('click', function () {
-          window.open('https://bsdxr.com', '_blank');
-        });
+        setTimeout(function () {
+          var mc = document.querySelector('#mouse-cursor');
+          if (mc && mc.components.raycaster) mc.components.raycaster.refreshObjects();
+        }, 800);
       });
     </script>
 

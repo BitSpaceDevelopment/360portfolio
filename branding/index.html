@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BSD XR — Brand Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <script>
+    try {
+      if (localStorage.getItem('bsdxr-theme') === 'light')
+        document.documentElement.classList.add('light');
+    } catch(e) {}
+  </script>
+  <style>
+    /* ── CSS custom properties ─────────────────────────────────────────── */
+    :root {
+      --color-background:   10 10 10;
+      --color-surface:      17 17 17;
+      --color-surface-2:    24 24 24;
+      --color-border:       34 34 34;
+      --color-border-light: 51 51 51;
+      --color-text:         229 229 229;
+      --color-muted:        102 102 102;
+      --color-accent:       255 255 255;
+    }
+    :root.light {
+      --color-background:   238 238 238;
+      --color-surface:      228 228 228;
+      --color-surface-2:    218 218 218;
+      --color-border:       204 204 204;
+      --color-border-light: 187 187 187;
+      --color-text:         17 17 17;
+      --color-muted:        119 119 119;
+      --color-accent:       27 79 216;
+    }
+
+    /* ── Reset & base ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Space Mono', monospace;
+      background-color: rgb(var(--color-background));
+      color: rgb(var(--color-text));
+      font-size: 13px;
+      line-height: 1.6;
+      transition: background-color .25s, color .25s;
+      overflow-x: hidden;
+    }
+
+    /* ── Utility ───────────────────────────────────────────────────────── */
+    .uppercase  { text-transform: uppercase; }
+    .tracked    { letter-spacing: .12em; }
+    .tracked-xl { letter-spacing: .2em; }
+    .muted      { color: rgb(var(--color-muted)); }
+    .accent     { color: rgb(var(--color-accent)); }
+    .mono       { font-family: 'Space Mono', monospace; }
+    .bold       { font-weight: 700; }
+    .border-box {
+      border: 1px solid rgb(var(--color-border));
+    }
+
+    /* ── Layout ────────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid rgb(var(--color-border));
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 40px;
+      line-height: 1.1;
+    }
+
+    /* ── Nav ───────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgb(var(--color-background) / .95);
+      border-bottom: 1px solid rgb(var(--color-border));
+      backdrop-filter: blur(8px);
+      transition: background-color .25s;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 22px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: rgb(var(--color-text)); }
+    .nav-links a.active {
+      border-bottom: 1px solid rgb(var(--color-accent));
+    }
+    .theme-btn {
+      background: none;
+      border: 1px solid rgb(var(--color-border));
+      color: rgb(var(--color-muted));
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+    }
+    .theme-btn:hover {
+      border-color: rgb(var(--color-border-light));
+      color: rgb(var(--color-text));
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────────────── */
+    #hero {
+      padding: 100px 0 80px;
+      border-top: none;
+    }
+    .hero-logo { margin-bottom: 32px; }
+    .hero-logo img { height: 64px; }
+    .hero-tagline {
+      font-size: 10px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      margin-bottom: 24px;
+    }
+    .hero-desc {
+      max-width: 520px;
+      font-size: 13px;
+      color: rgb(var(--color-muted));
+      letter-spacing: .04em;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+    }
+    .hero-meta-item {}
+    .hero-meta-label {
+      font-size: 9px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      margin-bottom: 4px;
+    }
+    .hero-meta-value {
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgb(var(--color-text));
+      font-weight: 700;
+    }
+
+    /* ── Colour swatches ───────────────────────────────────────────────── */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+      margin-bottom: 40px;
+    }
+    .swatch {
+      background: rgb(var(--color-background));
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background .25s;
+    }
+    .swatch-preview {
+      height: 80px;
+      transition: height .15s;
+    }
+    .swatch:hover .swatch-preview { height: 88px; }
+    .swatch-info {
+      padding: 12px 14px;
+      background: rgb(var(--color-surface));
+    }
+    .swatch-name {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      margin-bottom: 4px;
+    }
+    .swatch-hex {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgb(var(--color-text));
+      letter-spacing: .06em;
+    }
+    .swatch-usage {
+      font-size: 9px;
+      letter-spacing: .08em;
+      color: rgb(var(--color-muted));
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .copy-flash {
+      position: absolute;
+      inset: 0;
+      background: rgb(var(--color-accent) / .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgb(var(--color-accent));
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .1s;
+    }
+    .swatch.copied .copy-flash { opacity: 1; }
+
+    .theme-toggle-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .tab-btn {
+      background: none;
+      border: 1px solid rgb(var(--color-border));
+      color: rgb(var(--color-muted));
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .tab-btn.active {
+      border-color: rgb(var(--color-accent));
+      color: rgb(var(--color-accent));
+      background: rgb(var(--color-accent) / .08);
+    }
+    .tab-btn:hover:not(.active) {
+      border-color: rgb(var(--color-border-light));
+      color: rgb(var(--color-text));
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .status-badge {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+    }
+    .badge-discontinued { border: 1px solid #b45309; color: #ca8a04; }
+    .badge-filtered     { border: 1px solid #9a3412; color: #f97316; }
+    .badge-winner       { border: 1px solid #4ade80; color: #4ade80; }
+    .badge-active       { border: 1px solid #22c55e; color: #22c55e; }
+    .badge-error        { border: 1px solid #ef4444; color: #ef4444; }
+
+    /* ── Gradient swatch ───────────────────────────────────────────────── */
+    .gradient-swatch {
+      height: 80px;
+      background: linear-gradient(90deg, #1b3d9e 0%, #00a8e8 100%);
+      margin-bottom: 12px;
+    }
+    .gradient-label {
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+    }
+    .gradient-stops {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+    .gradient-stop {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: rgb(var(--color-text));
+    }
+
+    /* ── Typography ────────────────────────────────────────────────────── */
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+    }
+    .type-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 160px;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 20px;
+      background: rgb(var(--color-surface));
+      transition: background .15s;
+    }
+    .type-row:hover { background: rgb(var(--color-surface-2)); }
+    .type-meta {
+      font-size: 9px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+    }
+    .type-sample {
+      font-family: 'Space Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: rgb(var(--color-text));
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .type-usage {
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      text-align: right;
+    }
+
+    .letter-spacing-demo {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+    }
+    .ls-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      align-items: center;
+      gap: 24px;
+      padding: 14px 20px;
+      background: rgb(var(--color-surface));
+    }
+
+    /* ── Logo ──────────────────────────────────────────────────────────── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+      margin-bottom: 40px;
+    }
+    .logo-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 40px;
+      gap: 24px;
+    }
+    .logo-card-dark { background: #0a0a0a; }
+    .logo-card-light { background: #eeeeee; }
+    .logo-card img { max-width: 260px; width: 100%; }
+    .logo-card-label {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .logo-card-dark  .logo-card-label { color: #666666; }
+    .logo-card-light .logo-card-label { color: #777777; }
+
+    .rules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+    }
+    .rule-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 14px 20px;
+      background: rgb(var(--color-surface));
+      transition: background .15s;
+    }
+    .rule-row:hover { background: rgb(var(--color-surface-2)); }
+    .rule-icon {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .rule-icon.do   { color: #4ade80; }
+    .rule-icon.dont { color: #ef4444; }
+    .rule-text {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgb(var(--color-text));
+    }
+
+    /* ── Components ────────────────────────────────────────────────────── */
+    .component-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+    }
+    .component-card {
+      background: rgb(var(--color-surface));
+      padding: 32px;
+    }
+    .component-card-title {
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgb(var(--color-border));
+    }
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border: 1px solid;
+      cursor: pointer;
+      background: none;
+      transition: all .15s;
+    }
+    .btn-primary {
+      border-color: rgb(var(--color-accent));
+      color: rgb(var(--color-accent));
+    }
+    .btn-primary:hover {
+      background: rgb(var(--color-accent));
+      color: rgb(var(--color-background));
+    }
+    .btn-ghost {
+      border-color: rgb(var(--color-border));
+      color: rgb(var(--color-muted));
+    }
+    .btn-ghost:hover {
+      border-color: rgb(var(--color-border-light));
+      color: rgb(var(--color-text));
+    }
+    .btn-danger {
+      border-color: #7f1d1d;
+      color: #ef4444;
+    }
+    .btn-danger:hover { background: #1c0202; }
+
+    .input-demo {
+      width: 100%;
+      background: rgb(var(--color-surface-2));
+      border: 1px solid rgb(var(--color-border));
+      color: rgb(var(--color-text));
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      padding: 8px 12px;
+      outline: none;
+      transition: border-color .15s;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+    }
+    .input-demo::placeholder { color: rgb(var(--color-muted)); text-transform: uppercase; }
+    .input-demo:focus { border-color: rgb(var(--color-border-light)); }
+
+    .filter-btns { display: flex; gap: 4px; flex-wrap: wrap; }
+    .filter-btn {
+      background: none;
+      border: 1px solid rgb(var(--color-border));
+      color: rgb(var(--color-muted));
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .filter-btn.active {
+      border-color: rgb(var(--color-accent));
+      color: rgb(var(--color-accent));
+      background: rgb(var(--color-accent) / .08);
+    }
+    .filter-btn:hover:not(.active) {
+      border-color: rgb(var(--color-border-light));
+      color: rgb(var(--color-text));
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid rgb(var(--color-border));
+    }
+    .data-row:last-child { border-bottom: none; }
+    .data-key {
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+    }
+    .data-val {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgb(var(--color-text));
+      font-weight: 700;
+    }
+
+    /* ── Principles ────────────────────────────────────────────────────── */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+    }
+    .principle-card {
+      background: rgb(var(--color-surface));
+      padding: 28px 24px;
+      transition: background .15s;
+      cursor: default;
+    }
+    .principle-card:hover { background: rgb(var(--color-surface-2)); }
+    .principle-num {
+      font-size: 9px;
+      letter-spacing: .2em;
+      color: rgb(var(--color-muted));
+      margin-bottom: 10px;
+    }
+    .principle-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgb(var(--color-text));
+      margin-bottom: 8px;
+    }
+    .principle-body {
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      line-height: 1.7;
+    }
+
+    /* ── Voice ─────────────────────────────────────────────────────────── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: rgb(var(--color-border));
+      border: 1px solid rgb(var(--color-border));
+      margin-bottom: 40px;
+    }
+    .voice-card {
+      background: rgb(var(--color-surface));
+      padding: 24px;
+      transition: background .15s;
+    }
+    .voice-card:hover { background: rgb(var(--color-surface-2)); }
+    .voice-attr {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgb(var(--color-accent));
+      margin-bottom: 8px;
+    }
+    .voice-desc {
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      line-height: 1.7;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgb(var(--color-border));
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-text {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgb(var(--color-muted));
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: rgb(var(--color-text)); }
+
+    /* ── Code snippet ──────────────────────────────────────────────────── */
+    .code-block {
+      background: rgb(var(--color-surface));
+      border: 1px solid rgb(var(--color-border));
+      padding: 20px 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: rgb(var(--color-muted));
+      letter-spacing: .04em;
+      overflow-x: auto;
+      line-height: 1.8;
+      margin-top: 16px;
+      position: relative;
+    }
+    .code-block .hl { color: rgb(var(--color-accent)); }
+    .code-copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: 1px solid rgb(var(--color-border));
+      color: rgb(var(--color-muted));
+      font-family: 'Space Mono', monospace;
+      font-size: 8px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .code-copy-btn:hover {
+      border-color: rgb(var(--color-border-light));
+      color: rgb(var(--color-text));
+    }
+
+    /* ── Responsive ────────────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .logo-grid  { grid-template-columns: 1fr; }
+      .component-grid { grid-template-columns: 1fr; }
+      .type-row { grid-template-columns: 80px 1fr; }
+      .type-usage { display: none; }
+      .hero-meta { gap: 20px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <img id="nav-logo-img" src="logo-dark.png" alt="BSD XR" />
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#hero"        class="active">Overview</a></li>
+          <li><a href="#colours">Colours</a></li>
+          <li><a href="#typography">Type</a></li>
+          <li><a href="#logo">Logo</a></li>
+          <li><a href="#components">Components</a></li>
+          <li><a href="#principles">Principles</a></li>
+          <li><a href="#voice">Voice</a></li>
+        </ul>
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">◑ Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────────────── -->
+  <section id="hero" class="section">
+    <div class="container">
+      <div class="hero-logo">
+        <img id="hero-logo-img" src="logo-dark.png" alt="BSD XR" />
+      </div>
+      <div class="hero-tagline tracked-xl">Immersive Technology Experts</div>
+      <p class="hero-desc">
+        BSD XR is a leading extended reality development company specialising in
+        immersive XR, AR, and AI solutions for industries that demand precision,
+        innovation, and results.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Founded</div>
+          <div class="hero-meta-value">2015</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Location</div>
+          <div class="hero-meta-value">Winnipeg, MB, Canada</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Specialisation</div>
+          <div class="hero-meta-value">XR / AR / VR / AI</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Industries</div>
+          <div class="hero-meta-value">6+ Verticals</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Colours ────────────────────────────────────────────────────── -->
+  <section id="colours" class="section">
+    <div class="container">
+      <div class="section-label">02 — Colour System</div>
+      <div class="section-title">Colour</div>
+
+      <div class="theme-toggle-row">
+        <button class="tab-btn active" data-palette="dark">Dark Mode</button>
+        <button class="tab-btn" data-palette="light">Light Mode</button>
+      </div>
+
+      <div id="swatch-container" class="swatch-grid"></div>
+
+      <p class="section-label" style="margin-bottom:16px">Brand Gradient — XR Mark Only</p>
+      <div style="max-width:360px">
+        <div class="gradient-swatch"></div>
+        <div class="gradient-label">Linear gradient — reserved exclusively for the XR mark</div>
+        <div class="gradient-stops">
+          <span class="gradient-stop">#1B3D9E</span>
+          <span class="gradient-stop">#00A8E8</span>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-top:40px; margin-bottom:12px">Status Colours — Fixed, Both Themes</p>
+      <div class="status-row">
+        <span class="status-badge badge-discontinued">Discontinued</span>
+        <span class="status-badge badge-filtered">Filtered</span>
+        <span class="status-badge badge-winner">Winner</span>
+        <span class="status-badge badge-active">Active</span>
+        <span class="status-badge badge-error">Error</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Typography ─────────────────────────────────────────────────── -->
+  <section id="typography" class="section">
+    <div class="container">
+      <div class="section-label">03 — Typography</div>
+      <div class="section-title">Space Mono</div>
+
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-meta">text-3xl / 30px<br>bold · tracked</div>
+          <div class="type-sample" style="font-size:30px;font-weight:700">BSD XR</div>
+          <div class="type-usage">Page Title</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">text-2xl / 24px<br>bold · tracked</div>
+          <div class="type-sample" style="font-size:24px;font-weight:700">Immersive XR</div>
+          <div class="type-usage">Section Heading</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">text-xl / 20px<br>bold · tracked</div>
+          <div class="type-sample" style="font-size:20px;font-weight:700">Design-Led, Research-Driven</div>
+          <div class="type-usage">Sub-heading</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">text-sm / 14px<br>regular · tracked</div>
+          <div class="type-sample" style="font-size:14px">Winnipeg, Manitoba, Canada</div>
+          <div class="type-usage">Body Text</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">text-xs / 12px<br>regular · tracked</div>
+          <div class="type-sample" style="font-size:12px">Select up to 4 devices to compare</div>
+          <div class="type-usage">Labels / Captions</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">text-[10px]<br>regular · tracked-xl</div>
+          <div class="type-sample" style="font-size:10px;letter-spacing:.25em">Muted label · founded · location</div>
+          <div class="type-usage">Meta / Badges</div>
+        </div>
+      </div>
+
+      <div class="letter-spacing-demo" style="margin-top:1px">
+        <div class="type-row">
+          <div class="type-meta">tracking-wider<br>.1em</div>
+          <div class="type-sample" style="font-size:13px;letter-spacing:.1em">Bit Space Development Ltd</div>
+          <div class="type-usage">Body / Inputs</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">tracking-widest<br>.2em</div>
+          <div class="type-sample" style="font-size:13px;letter-spacing:.2em">Immersive Technology</div>
+          <div class="type-usage">Nav / Buttons</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">tracking-[.25em]<br>.25em</div>
+          <div class="type-sample" style="font-size:13px;letter-spacing:.25em">Founded 2015</div>
+          <div class="type-usage">Labels / Meta</div>
+        </div>
+      </div>
+
+      <div class="code-block" style="margin-top:32px">
+        <button class="code-copy-btn" data-copy="@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');">Copy</button>
+        <span class="muted">/* Google Fonts import */</span><br/>
+        @import url(<span class="hl">'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap'</span>);<br/><br/>
+        <span class="muted">/* All UI text */</span><br/>
+        font-family: <span class="hl">'Space Mono'</span>, monospace;<br/>
+        text-transform: <span class="hl">uppercase</span>;<br/>
+        letter-spacing: <span class="hl">0.15em</span>;
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Logo ───────────────────────────────────────────────────────── -->
+  <section id="logo" class="section">
+    <div class="container">
+      <div class="section-label">04 — Logo System</div>
+      <div class="section-title">Logo Usage</div>
+
+      <div class="logo-grid">
+        <div class="logo-card logo-card-dark">
+          <img src="logo-dark.png" alt="BSD XR logo — dark version" />
+          <span class="logo-card-label">Dark Version — on dark backgrounds</span>
+        </div>
+        <div class="logo-card logo-card-light">
+          <img src="logo-light.png" alt="BSD XR logo — light version" />
+          <span class="logo-card-label">Light Version — on light backgrounds</span>
+        </div>
+      </div>
+
+      <div class="rules-list">
+        <div class="rule-row">
+          <span class="rule-icon do">DO</span>
+          <span class="rule-text">Use the dark logo on dark backgrounds only</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-icon do">DO</span>
+          <span class="rule-text">Use the light logo on light backgrounds only</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-icon do">DO</span>
+          <span class="rule-text">Maintain clear space equal to the cap-height of "B" on all sides</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-icon dont">NO</span>
+          <span class="rule-text">Never flatten the XR gradient to a single colour</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-icon dont">NO</span>
+          <span class="rule-text">Never place the dark logo on a light background or vice versa</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-icon dont">NO</span>
+          <span class="rule-text">Never stretch, rotate, skew, or add effects to the logo</span>
+        </div>
+        <div class="rule-row">
+          <span class="rule-icon dont">NO</span>
+          <span class="rule-text">Never rearrange the tagline "Immersive Technology Experts" — use it below or omit it</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Components ─────────────────────────────────────────────────── -->
+  <section id="components" class="section">
+    <div class="container">
+      <div class="section-label">05 — Component Library</div>
+      <div class="section-title">Components</div>
+
+      <div class="component-grid">
+
+        <!-- Buttons -->
+        <div class="component-card">
+          <div class="component-card-title">Buttons</div>
+          <div class="component-row">
+            <button class="btn btn-primary">Primary CTA</button>
+            <button class="btn btn-ghost">Ghost Button</button>
+            <button class="btn btn-danger">Danger</button>
+          </div>
+          <div class="code-block" style="margin-top:16px;font-size:9px">
+            <span class="hl">Primary:</span>  border border-accent text-accent<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hover:bg-accent hover:text-background<br/>
+            <span class="hl">Ghost:</span>    border border-border text-muted<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hover:border-border-light hover:text-text<br/>
+            <span class="hl">Danger:</span>   border border-red-900 text-red-500<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hover:bg-red-950
+          </div>
+        </div>
+
+        <!-- Inputs -->
+        <div class="component-card">
+          <div class="component-card-title">Inputs</div>
+          <input class="input-demo" type="text" placeholder="Search devices..." />
+          <input class="input-demo" type="text" placeholder="Company name" />
+          <div class="code-block" style="margin-top:4px;font-size:9px">
+            bg-surface border border-border text-text<br/>
+            font-mono text-sm px-3 py-2 outline-none<br/>
+            <span class="hl">focus:</span>border-border-light
+          </div>
+        </div>
+
+        <!-- Toggle / Filter -->
+        <div class="component-card">
+          <div class="component-card-title">Filter Toggles</div>
+          <div class="filter-btns" id="filter-demo">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="xr">XR</button>
+            <button class="filter-btn" data-filter="ar">AR</button>
+            <button class="filter-btn" data-filter="vr">VR</button>
+            <button class="filter-btn" data-filter="ai">AI</button>
+          </div>
+          <div class="code-block" style="margin-top:16px;font-size:9px">
+            <span class="hl">Active:</span>   border-accent text-accent<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bg-accent/10<br/>
+            <span class="hl">Inactive:</span> border-border text-muted<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hover:border-border-light
+          </div>
+        </div>
+
+        <!-- Data display -->
+        <div class="component-card">
+          <div class="component-card-title">Data Table Row</div>
+          <div class="data-row">
+            <span class="data-key">Founded</span>
+            <span class="data-val">2015</span>
+          </div>
+          <div class="data-row">
+            <span class="data-key">Location</span>
+            <span class="data-val">Winnipeg, MB, Canada</span>
+          </div>
+          <div class="data-row">
+            <span class="data-key">Specialisation</span>
+            <span class="data-val">XR / AR / VR / AI</span>
+          </div>
+          <div class="data-row">
+            <span class="data-key">Approach</span>
+            <span class="data-val">Design-Led, Research-Driven</span>
+          </div>
+        </div>
+
+        <!-- Status badges -->
+        <div class="component-card" style="grid-column: 1 / -1">
+          <div class="component-card-title">Status Badges</div>
+          <div class="status-row">
+            <span class="status-badge badge-discontinued">Discontinued</span>
+            <span class="status-badge badge-filtered">Filtered</span>
+            <span class="status-badge badge-winner">Winner</span>
+            <span class="status-badge badge-active">Active</span>
+            <span class="status-badge badge-error">Error</span>
+          </div>
+          <div class="code-block" style="margin-top:16px;font-size:9px">
+            <span class="hl">Discontinued:</span> border-yellow-700 text-yellow-600<br/>
+            <span class="hl">Filtered:</span>     border-orange-800 text-orange-500<br/>
+            <span class="hl">Winner:</span>        text-green-400<br/>
+            <span class="hl">Active:</span>        text-green-500<br/>
+            <span class="hl">Error:</span>         text-red-500<br/>
+            All: px-1.5 py-0.5 text-[10px] uppercase tracking-widest
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Design Principles ──────────────────────────────────────────── -->
+  <section id="principles" class="section">
+    <div class="container">
+      <div class="section-label">06 — Design Principles</div>
+      <div class="section-title">Non-Negotiable Rules</div>
+
+      <div class="principles-grid" id="principles-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Brand Voice ────────────────────────────────────────────────── -->
+  <section id="voice" class="section">
+    <div class="container">
+      <div class="section-label">07 — Brand Voice</div>
+      <div class="section-title">Voice &amp; Tone</div>
+
+      <div class="voice-grid" id="voice-grid"></div>
+
+      <div style="margin-top:40px">
+        <div class="section-label" style="margin-bottom:16px">Writing Examples</div>
+        <div class="rules-list">
+          <div class="rule-row">
+            <span class="rule-icon do">DO</span>
+            <span class="rule-text">We build the future of how humans interact with information.</span>
+          </div>
+          <div class="rule-row">
+            <span class="rule-icon do">DO</span>
+            <span class="rule-text">XR / AR / VR / AI — precision, innovation, results.</span>
+          </div>
+          <div class="rule-row">
+            <span class="rule-icon dont">NO</span>
+            <span class="rule-text">We are super excited to announce our amazing new product!</span>
+          </div>
+          <div class="rule-row">
+            <span class="rule-icon dont">NO</span>
+            <span class="rule-text">Our cutting-edge solutions leverage synergistic paradigms.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-text">© 2026 Bit Space Development Ltd. — BSD XR Brand Guide</span>
+        <div class="footer-links">
+          <a href="https://bitspacedevelopment.github.io/bsd-branding-repo/" target="_blank" rel="noopener">View Live</a>
+          <a href="https://bsdxr.com" target="_blank" rel="noopener">bsdxr.com</a>
+          <a href="https://bsdxr.com/contact" target="_blank" rel="noopener">Contact</a>
+          <a href="mailto:info@bsdxr.com">info@bsdxr.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Theme data ──────────────────────────────────────────────────── */
+    const PALETTES = {
+      dark: [
+        { name: 'Background',    hex: '#0a0a0a', rgb: '10 10 10',    usage: 'Page background' },
+        { name: 'Surface',       hex: '#111111', rgb: '17 17 17',    usage: 'Cards, panels' },
+        { name: 'Surface-2',     hex: '#181818', rgb: '24 24 24',    usage: 'Elevated surfaces' },
+        { name: 'Border',        hex: '#222222', rgb: '34 34 34',    usage: 'Default borders' },
+        { name: 'Border-Light',  hex: '#333333', rgb: '51 51 51',    usage: 'Hover borders' },
+        { name: 'Text',          hex: '#e5e5e5', rgb: '229 229 229', usage: 'Primary text' },
+        { name: 'Muted',         hex: '#666666', rgb: '102 102 102', usage: 'Labels, captions' },
+        { name: 'Accent',        hex: '#ffffff', rgb: '255 255 255', usage: 'CTAs, active states' },
+      ],
+      light: [
+        { name: 'Background',    hex: '#eeeeee', rgb: '238 238 238', usage: 'Page background' },
+        { name: 'Surface',       hex: '#e4e4e4', rgb: '228 228 228', usage: 'Cards, panels' },
+        { name: 'Surface-2',     hex: '#dadada', rgb: '218 218 218', usage: 'Elevated surfaces' },
+        { name: 'Border',        hex: '#cccccc', rgb: '204 204 204', usage: 'Default borders' },
+        { name: 'Border-Light',  hex: '#bbbbbb', rgb: '187 187 187', usage: 'Hover borders' },
+        { name: 'Text',          hex: '#111111', rgb: '17 17 17',    usage: 'Primary text' },
+        { name: 'Muted',         hex: '#777777', rgb: '119 119 119', usage: 'Labels, captions' },
+        { name: 'Accent',        hex: '#1b4fd8', rgb: '27 79 216',   usage: 'CTAs, active states' },
+      ],
+    };
+
+    const PRINCIPLES = [
+      { title: 'No rounded corners',    body: 'Every element uses sharp 90° edges. No border-radius anywhere.' },
+      { title: '1px borders only',      body: 'Never use 2px or thicker borders. One pixel, always.' },
+      { title: 'No shadows',            body: 'No box-shadow or drop-shadow anywhere in the UI.' },
+      { title: 'No UI gradients',       body: 'Flat surfaces only. The XR gradient is the sole exception.' },
+      { title: 'Monospace everywhere',  body: 'Space Mono at all sizes — body, labels, code, inputs.' },
+      { title: 'Minimal colour',        body: 'Accent appears only on interactive elements. Never decorative.' },
+      { title: 'Uppercase always',      body: 'All user-facing text is uppercase. No sentence case in UI.' },
+      { title: 'Sparse layouts',        body: 'Generous whitespace. Content never fights for attention.' },
+    ];
+
+    const VOICE = [
+      { attr: 'Direct',                    desc: 'No filler words. Every sentence earns its place.' },
+      { attr: 'Technical + accessible',    desc: 'We speak to engineers and executives in the same breath.' },
+      { attr: 'Confident, not arrogant',   desc: 'We let our work speak. No hyperbole.' },
+      { attr: 'Uppercase, tracked-out',    desc: 'Even our tone feels like the typography — precise, deliberate.' },
+    ];
+
+    /* ── Render principles ───────────────────────────────────────────── */
+    document.getElementById('principles-grid').innerHTML = PRINCIPLES.map((p, i) => `
+      <div class="principle-card">
+        <div class="principle-num">0${i + 1}</div>
+        <div class="principle-title">${p.title}</div>
+        <div class="principle-body">${p.body}</div>
+      </div>
+    `).join('');
+
+    document.getElementById('voice-grid').innerHTML = VOICE.map(v => `
+      <div class="voice-card">
+        <div class="voice-attr">${v.attr}</div>
+        <div class="voice-desc">${v.desc}</div>
+      </div>
+    `).join('');
+
+    /* ── Swatch rendering ────────────────────────────────────────────── */
+    let activePalette = 'dark';
+
+    function isLight(hex) {
+      const r = parseInt(hex.slice(1,3),16);
+      const g = parseInt(hex.slice(3,5),16);
+      const b = parseInt(hex.slice(5,7),16);
+      return (r * 299 + g * 587 + b * 114) / 1000 > 128;
+    }
+
+    function renderSwatches(palette) {
+      const container = document.getElementById('swatch-container');
+      container.innerHTML = PALETTES[palette].map(c => {
+        const textCol = isLight(c.hex) ? '#111111' : '#e5e5e5';
+        return `
+          <div class="swatch" data-hex="${c.hex}" title="Click to copy hex">
+            <div class="swatch-preview" style="background:${c.hex}"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">${c.name}</div>
+              <div class="swatch-hex">${c.hex.toUpperCase()}</div>
+              <div class="swatch-usage">${c.usage}</div>
+            </div>
+            <div class="copy-flash">Copied</div>
+          </div>
+        `;
+      }).join('');
+
+      container.querySelectorAll('.swatch').forEach(el => {
+        el.addEventListener('click', () => {
+          const hex = el.dataset.hex;
+          navigator.clipboard.writeText(hex).catch(() => {});
+          el.classList.add('copied');
+          setTimeout(() => el.classList.remove('copied'), 900);
+        });
+      });
+    }
+
+    /* ── Palette tabs ────────────────────────────────────────────────── */
+    document.querySelectorAll('[data-palette]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activePalette = btn.dataset.palette;
+        document.querySelectorAll('[data-palette]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderSwatches(activePalette);
+      });
+    });
+
+    renderSwatches('dark');
+
+    /* ── Filter toggles demo ─────────────────────────────────────────── */
+    document.querySelectorAll('#filter-demo .filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#filter-demo .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    /* ── Theme toggle ────────────────────────────────────────────────── */
+    const html      = document.documentElement;
+    const themeBtn  = document.getElementById('theme-btn');
+    const navLogo   = document.getElementById('nav-logo-img');
+    const heroLogo  = document.getElementById('hero-logo-img');
+
+    /* makeDark=true → switch TO dark, makeDark=false → switch TO light */
+    function applyTheme(makeDark) {
+      if (makeDark) {
+        html.classList.remove('light');
+        themeBtn.textContent = '◑ Light';   /* now in dark — offer switch to Light */
+        navLogo.src  = 'logo-dark.png';
+        heroLogo.src = 'logo-dark.png';
+        localStorage.setItem('bsdxr-theme', 'dark');
+        document.querySelectorAll('[data-palette]').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-palette="dark"]').classList.add('active');
+        activePalette = 'dark';
+        renderSwatches('dark');
+      } else {
+        html.classList.add('light');
+        themeBtn.textContent = '◐ Dark';    /* now in light — offer switch to Dark */
+        navLogo.src  = 'logo-light.png';
+        heroLogo.src = 'logo-light.png';
+        localStorage.setItem('bsdxr-theme', 'light');
+        document.querySelectorAll('[data-palette]').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-palette="light"]').classList.add('active');
+        activePalette = 'light';
+        renderSwatches('light');
+      }
+    }
+
+    /* sync button label and logos with whatever theme was pre-applied */
+    (function initTheme() {
+      const isLight = html.classList.contains('light');
+      themeBtn.textContent = isLight ? '◐ Dark' : '◑ Light';
+      navLogo.src  = isLight ? 'logo-light.png' : 'logo-dark.png';
+      heroLogo.src = isLight ? 'logo-light.png' : 'logo-dark.png';
+      if (isLight) {
+        document.querySelectorAll('[data-palette]').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-palette="light"]').classList.add('active');
+        activePalette = 'light';
+        renderSwatches('light');
+      }
+    })();
+
+    themeBtn.addEventListener('click', () => {
+      /* if currently light, make dark; if currently dark, make light */
+      applyTheme(html.classList.contains('light'));
+    });
+
+    /* ── Code copy buttons ───────────────────────────────────────────── */
+    document.querySelectorAll('.code-copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.dataset.copy || btn.closest('.code-block').innerText.replace('Copy','').trim();
+        navigator.clipboard.writeText(text).catch(() => {});
+        const orig = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => btn.textContent = orig, 1200);
+      });
+    });
+
+    /* ── Active nav on scroll ────────────────────────────────────────── */
+    const sections = ['hero','colours','typography','logo','components','principles','voice'];
+    const navAs    = document.querySelectorAll('#nav-links a');
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navAs.forEach(a => a.classList.remove('active'));
+          const match = document.querySelector(`#nav-links a[href="#${e.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  </script>
+</body>
+</html>

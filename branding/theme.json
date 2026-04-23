@@ -1,0 +1,105 @@
+{
+  "brand": "BSD XR",
+  "company": "Bit Space Development Ltd.",
+  "tagline": "Immersive Technology Experts",
+
+  "typography": {
+    "primary": "Space Mono",
+    "fallback": "monospace",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap",
+    "weights": [400, 700],
+    "casing": "uppercase",
+    "letterSpacing": "widest",
+    "notes": "All display text is uppercase with wide letter-spacing. No rounded corners anywhere in the UI."
+  },
+
+  "logos": {
+    "dark": {
+      "file": "./logo-dark.png",
+      "description": "White BSD wordmark + blue gradient XR mark. Use on dark backgrounds.",
+      "usage": "Dark mode, dark backgrounds, print on dark stock"
+    },
+    "light": {
+      "file": "./logo-light.png",
+      "description": "Black BSD wordmark + blue gradient XR mark. Use on light backgrounds.",
+      "usage": "Light mode, light backgrounds, standard print"
+    },
+    "brandBlue": {
+      "gradient": "linear-gradient(135deg, #1b3d9e 0%, #00a8e8 100%)",
+      "from": "#1b3d9e",
+      "to": "#00a8e8",
+      "notes": "The XR mark always uses this gradient. Never flatten it to a single colour."
+    }
+  },
+
+  "themes": {
+    "dark": {
+      "name": "Dark Mode (default)",
+      "description": "Primary brand expression. Near-black backgrounds with light text and white accent.",
+      "colors": {
+        "background":   { "hex": "#0a0a0a", "rgb": "10 10 10",    "usage": "Page background" },
+        "surface":      { "hex": "#111111", "rgb": "17 17 17",    "usage": "Cards, panels, dropdowns" },
+        "surface-2":    { "hex": "#181818", "rgb": "24 24 24",    "usage": "Elevated surface, category headers" },
+        "border":       { "hex": "#222222", "rgb": "34 34 34",    "usage": "Default borders, dividers" },
+        "border-light": { "hex": "#333333", "rgb": "51 51 51",    "usage": "Hover-state borders, subtle dividers" },
+        "text":         { "hex": "#e5e5e5", "rgb": "229 229 229", "usage": "Primary body and heading text" },
+        "muted":        { "hex": "#666666", "rgb": "102 102 102", "usage": "Labels, captions, placeholders" },
+        "accent":       { "hex": "#ffffff", "rgb": "255 255 255", "usage": "CTAs, active states, winner highlights, links" }
+      },
+      "statusColors": {
+        "discontinued": { "border": "#b45309", "text": "#ca8a04", "tailwind": "border-yellow-700 text-yellow-600" },
+        "filtered":     { "border": "#9a3412", "text": "#f97316", "tailwind": "border-orange-800 text-orange-500" },
+        "winner":       { "text": "#4ade80",   "tailwind": "text-green-400" },
+        "error":        { "text": "#ef4444",   "tailwind": "text-red-500" },
+        "active":       { "text": "#22c55e",   "tailwind": "text-green-500" }
+      }
+    },
+
+    "light": {
+      "name": "Light Mode",
+      "description": "Alternate expression matching bsdxr.com light mode. Warm gray backgrounds with dark text and BSD blue accent.",
+      "colors": {
+        "background":   { "hex": "#eeeeee", "rgb": "238 238 238", "usage": "Page background" },
+        "surface":      { "hex": "#e4e4e4", "rgb": "228 228 228", "usage": "Cards, panels, dropdowns" },
+        "surface-2":    { "hex": "#dadada", "rgb": "218 218 218", "usage": "Elevated surface, category headers" },
+        "border":       { "hex": "#cccccc", "rgb": "204 204 204", "usage": "Default borders, dividers" },
+        "border-light": { "hex": "#bbbbbb", "rgb": "187 187 187", "usage": "Hover-state borders, subtle dividers" },
+        "text":         { "hex": "#111111", "rgb": "17 17 17",    "usage": "Primary body and heading text" },
+        "muted":        { "hex": "#777777", "rgb": "119 119 119", "usage": "Labels, captions, placeholders" },
+        "accent":       { "hex": "#1b4fd8", "rgb": "27 79 216",   "usage": "CTAs, active states, winner highlights, links" }
+      },
+      "statusColors": {
+        "discontinued": { "border": "#b45309", "text": "#ca8a04", "tailwind": "border-yellow-700 text-yellow-600" },
+        "filtered":     { "border": "#9a3412", "text": "#f97316", "tailwind": "border-orange-800 text-orange-500" },
+        "winner":       { "text": "#4ade80",   "tailwind": "text-green-400" },
+        "error":        { "text": "#ef4444",   "tailwind": "text-red-500" },
+        "active":       { "text": "#22c55e",   "tailwind": "text-green-500" }
+      }
+    }
+  },
+
+  "implementation": {
+    "method": "CSS custom properties on :root",
+    "themeClass": "light",
+    "themeClassTarget": "<html> element",
+    "persistence": "localStorage key: bsdxr-theme",
+    "defaultTheme": "dark",
+    "cssVariableFormat": "R G B (space-separated channels for Tailwind opacity support)",
+    "example": {
+      "cssVariable": "--color-accent: 27 79 216",
+      "tailwindUsage": "rgb(var(--color-accent) / <alpha-value>)",
+      "generatedClass": "bg-accent → background-color: rgb(var(--color-accent) / 1)"
+    }
+  },
+
+  "designPrinciples": [
+    "No rounded corners — all elements use sharp 90° edges",
+    "1px borders only — never thicker",
+    "Uppercase text everywhere — no sentence case in UI labels",
+    "Wide letter-spacing (tracking-widest) on all labels and headings",
+    "Monospace font at all sizes — Space Mono is non-negotiable",
+    "Minimal colour — accent used sparingly for interactive elements only",
+    "No shadows or gradients in UI elements — flat surfaces only",
+    "The XR gradient is the only decorative element permitted"
+  ]
+}

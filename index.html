@@ -38,181 +38,106 @@
         background: #0a0a0a;
         border-bottom: 1px solid #222222;
       }
-
       .brand {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        text-decoration: none;
-        color: inherit;
+        display: flex; align-items: center; gap: 16px;
+        text-decoration: none; color: inherit;
       }
       .brand img { height: 20px; width: auto; }
       .brand .label {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #e5e5e5;
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.2em; text-transform: uppercase; color: #e5e5e5;
       }
       .brand .divider { width: 1px; height: 20px; background: #222222; }
-
       .header-actions { display: flex; align-items: center; gap: 20px; }
-
       .nav-link {
-        font-family: 'Space Mono', monospace;
-        font-size: 10px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #555555;
-        text-decoration: none;
-        background: none;
-        border: none;
-        cursor: pointer;
+        font-family: 'Space Mono', monospace; font-size: 10px;
+        letter-spacing: 0.15em; text-transform: uppercase;
+        color: #555555; text-decoration: none;
+        background: none; border: none; cursor: pointer;
         transition: color 0.1s;
       }
       .nav-link:hover { color: #e5e5e5; }
-
       .cta-button {
-        font-family: 'Space Mono', monospace;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #000000;
-        background: #ffffff;
-        border: 1px solid #ffffff;
-        padding: 9px 20px;
-        text-decoration: none;
-        transition: background 0.1s, color 0.1s;
-        cursor: pointer;
+        font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700;
+        letter-spacing: 0.15em; text-transform: uppercase;
+        color: #000; background: #fff; border: 1px solid #fff;
+        padding: 9px 20px; text-decoration: none;
+        transition: background 0.1s, color 0.1s; cursor: pointer;
       }
-      .cta-button:hover { background: transparent; color: #ffffff; }
+      .cta-button:hover { background: transparent; color: #fff; }
+      .controls-btn {
+        font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700;
+        letter-spacing: 0.15em; text-transform: uppercase;
+        color: #fff; background: #dc2626; border: 1px solid #dc2626;
+        padding: 9px 20px; cursor: pointer;
+        transition: background 0.1s, color 0.1s;
+      }
+      .controls-btn:hover { background: transparent; color: #dc2626; }
 
       /* ── Footer ── */
       #ui-footer {
         position: fixed;
         bottom: 0; left: 0; right: 0;
         z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 24px;
-        height: 36px;
-        background: #0a0a0a;
-        border-top: 1px solid #222222;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 24px; height: 36px;
+        background: #0a0a0a; border-top: 1px solid #222222;
         pointer-events: none;
       }
       #ui-footer span {
-        font-size: 10px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #444444;
+        font-size: 10px; letter-spacing: 0.15em;
+        text-transform: uppercase; color: #444444;
+      }
+      #current-scene {
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.2em; text-transform: uppercase;
+        color: #e5e5e5 !important;
+        transition: opacity 0.3s;
       }
 
-      /* ── Modal ── */
+      /* ── Controls Modal ── */
+      #controls-overlay {
+        display: none; position: fixed; inset: 0; z-index: 100;
+        background: rgba(10,10,10,0.92);
+        align-items: center; justify-content: center;
+      }
+      #controls-overlay.open { display: flex; }
+      #controls-modal {
+        background: #111111; border: 1px solid #3f0f0f;
+        width: 100%; max-width: 560px; margin: 0 24px;
+      }
+
+      /* ── About Modal ── */
       #modal-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        z-index: 100;
-        background: rgba(10, 10, 10, 0.9);
-        align-items: center;
-        justify-content: center;
+        display: none; position: fixed; inset: 0; z-index: 100;
+        background: rgba(10,10,10,0.9);
+        align-items: center; justify-content: center;
       }
       #modal-overlay.open { display: flex; }
-
       #modal {
-        background: #111111;
-        border: 1px solid #222222;
-        width: 100%;
-        max-width: 580px;
-        margin: 0 24px;
+        background: #111111; border: 1px solid #222222;
+        width: 100%; max-width: 580px; margin: 0 24px;
       }
-
       .modal-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 16px 24px;
-        border-bottom: 1px solid #222222;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 16px 24px; border-bottom: 1px solid #222222;
       }
-      .modal-title {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #e5e5e5;
-      }
+      .modal-title { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #e5e5e5; }
       .modal-close {
-        background: none;
-        border: none;
-        color: #555555;
-        font-family: 'Space Mono', monospace;
-        font-size: 14px;
-        cursor: pointer;
-        padding: 2px 6px;
-        transition: color 0.1s;
+        background: none; border: none; color: #555; font-family: 'Space Mono', monospace;
+        font-size: 14px; cursor: pointer; padding: 2px 6px; transition: color 0.1s;
       }
       .modal-close:hover { color: #e5e5e5; }
-
       .modal-body { padding: 32px 24px 24px; }
-
       .modal-section { margin-bottom: 28px; }
       .modal-section:last-child { margin-bottom: 0; }
-
-      .modal-eyebrow {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #555555;
-        margin-bottom: 10px;
-      }
-      .modal-lead {
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #e5e5e5;
-        margin-bottom: 12px;
-        line-height: 1.5;
-      }
-      .modal-body p {
-        font-size: 11px;
-        letter-spacing: 0.04em;
-        color: #777777;
-        line-height: 1.9;
-      }
-
-      .modal-rule {
-        border: none;
-        border-top: 1px solid #222222;
-        margin: 24px 0;
-      }
-
-      .modal-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 12px;
-      }
-      .modal-tag {
-        font-size: 10px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #555555;
-        border: 1px solid #333333;
-        padding: 5px 12px;
-      }
-
-      .modal-actions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 24px;
-      }
-      .modal-actions .cta-button { font-size: 10px; padding: 9px 20px; }
-      .modal-actions .nav-link   { font-size: 10px; }
+      .modal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #555; margin-bottom: 10px; }
+      .modal-lead { font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #e5e5e5; margin-bottom: 12px; line-height: 1.5; }
+      .modal-body p { font-size: 11px; letter-spacing: 0.04em; color: #777; line-height: 1.9; }
+      .modal-rule { border: none; border-top: 1px solid #222; margin: 24px 0; }
+      .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      .modal-tag { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #555; border: 1px solid #333; padding: 5px 12px; }
+      .modal-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
     </style>
 
     <script src="./js/aframe.min.js"></script>
@@ -224,31 +149,30 @@
     <script src="components/update-raycaster.js"></script>
 
     <script>
-      /* Subtle mouse parallax on the camera rig — desktop only, pauses on drag */
+      /* Subtle mouse parallax on desktop — pauses on drag / VR */
       AFRAME.registerComponent('mouse-parallax', {
         init: function () {
-          this.mouseX  = 0; this.mouseY  = 0;
+          this.mouseX = 0; this.mouseY = 0;
           this.smoothX = 0; this.smoothY = 0;
-          this.dragging = false;
-          this.isVR = false;
-          var self = this;
+          this.dragging = false; this.isVR = false;
+          var s = this;
           document.addEventListener('mousemove', function (e) {
-            self.mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
-            self.mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            s.mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+            s.mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
           });
-          document.addEventListener('mousedown', function () { self.dragging = true;  });
-          document.addEventListener('mouseup',   function () { self.dragging = false; });
-          this.el.sceneEl.addEventListener('enter-vr', function () { self.isVR = true;  });
-          this.el.sceneEl.addEventListener('exit-vr',  function () { self.isVR = false; });
+          document.addEventListener('mousedown', function () { s.dragging = true;  });
+          document.addEventListener('mouseup',   function () { s.dragging = false; });
+          this.el.sceneEl.addEventListener('enter-vr', function () { s.isVR = true;  });
+          this.el.sceneEl.addEventListener('exit-vr',  function () { s.isVR = false; });
         },
         tick: function () {
           if (this.isVR || this.dragging) return;
           var t = 0.018;
           this.smoothX += (this.mouseX - this.smoothX) * t;
           this.smoothY += (this.mouseY - this.smoothY) * t;
-          var DEG = Math.PI / 180;
-          this.el.object3D.rotation.y = this.smoothX * -7 * DEG;
-          this.el.object3D.rotation.x = this.smoothY *  3 * DEG;
+          var D = Math.PI / 180;
+          this.el.object3D.rotation.y = this.smoothX * -7 * D;
+          this.el.object3D.rotation.x = this.smoothY *  3 * D;
         }
       });
     </script>
@@ -263,9 +187,10 @@
         <span class="label">360 Portfolio</span>
       </a>
       <div class="header-actions">
+        <button class="controls-btn" id="controls-trigger">Controls</button>
         <button class="nav-link" id="about-trigger">About BSD XR</button>
         <a href="https://bsdxr.com" target="_blank" class="nav-link">bsdxr.com</a>
-        <a href="https://bsdxr.com" target="_blank" class="cta-button">Book a Demo</a>
+        <a href="https://bsdxr.com/contact" target="_blank" class="cta-button">Book a Demo</a>
       </div>
     </div>
 
@@ -302,93 +227,182 @@
         <!-- Audio -->
         <audio id="click-sound" crossorigin="anonymous" src="./audio/click.ogg"></audio>
 
-        <!-- Thumbnail template -->
+        <!--
+          Template: each thumbnail is a group containing
+          - a blue border plane (hidden until active)
+          - the clickable image plane
+          - a text label
+        -->
         <script id="link" type="text/nunjucks">
-          <a-plane class="link" height="0.9" width="0.9"
-            material="shader: flat; src: {{ thumb }}"
-            event-set__1="_event: mousedown; scale: 1 1 1"
-            event-set__2="_event: mouseup; scale: 1.12 1.12 1"
-            event-set__3="_event: mouseenter; scale: 1.12 1.12 1"
-            event-set__4="_event: mouseleave; scale: 1 1 1"
-            set-image="on: click; target: #image-360; src: {{ src }}"
-            sound="on: click; src: #click-sound"
-            update-raycaster="#cursor"></a-plane>
+          <a-entity>
+            <a-plane class="thumb-border"
+              data-pano="{{ src }}"
+              material="shader: flat; color: #1b4fd8; opacity: 0"
+              width="0.96" height="0.96" position="0 0 -0.01"></a-plane>
+            <a-plane class="link" height="0.9" width="0.9"
+              material="shader: flat; src: {{ thumb }}"
+              data-pano="{{ src }}"
+              event-set__1="_event: mousedown; scale: 1 1 1"
+              event-set__2="_event: mouseup; scale: 1.12 1.12 1"
+              event-set__3="_event: mouseenter; scale: 1.12 1.12 1"
+              event-set__4="_event: mouseleave; scale: 1 1 1"
+              set-image="on: click; target: #image-360; src: {{ src }}"
+              sound="on: click; src: #click-sound"
+              update-raycaster="#cursor"></a-plane>
+            <a-text value="{{ label }}"
+              color="#666666" align="center"
+              width="1.6" wrap-count="12"
+              position="0 -0.62 0.01"></a-text>
+          </a-entity>
         </script>
       </a-assets>
 
-      <!-- 360 sky -->
-      <a-sky id="image-360" radius="10" src="#symphonie1"></a-sky>
+      <!--
+        360 sky — fade animation baked in so nav arrows also get crossfades.
+        set-image components will also call setAttribute('animation__fade')
+        with the same value, which is harmless (idempotent).
+      -->
+      <a-sky id="image-360" radius="10" src="#symphonie1"
+        animation__fade="property: material.color; startEvents: set-image-fade; dir: alternate; dur: 300; from: #FFF; to: #000">
+      </a-sky>
 
       <!--
-        4-column grid, 0.9 thumbnails, 1.8 cell pitch.
-        Cols centred: x = -2.7 / -0.9 / +0.9 / +2.7
-        Row 1 at y=1.6 (eye level), rows spaced 1.8 apart.
-        Last row (3 items) centred: x = -1.8 / 0 / +1.8
+        4-col grid  |  cols: x = -2.7 / -0.9 / +0.9 / +2.7
+        Row 1 y=1.6 (eye level), rows spaced 1.8.
+        Row 3 (3 items) centred: x = -1.8 / 0 / +1.8
       -->
       <!-- Row 1 -->
-      <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#symphonie1-thumb" position="-2.7 1.6 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#symphonie2-thumb" position="-0.9 1.6 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#engagement" data-thumb="#engagement-thumb" position=" 0.9 1.6 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#stn"        data-thumb="#stn-thumb"        position=" 2.7 1.6 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#symphonie1" data-thumb="#symphonie1-thumb" data-label="SYMPHONIE I"   position="-2.7 1.6 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#symphonie2" data-thumb="#symphonie2-thumb" data-label="SYMPHONIE II"  position="-0.9 1.6 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#engagement" data-thumb="#engagement-thumb" data-label="ENGAGEMENT"   position=" 0.9 1.6 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#stn"        data-thumb="#stn-thumb"        data-label="STN"          position=" 2.7 1.6 -5"></a-entity>
       <!-- Row 2 -->
-      <a-entity template="src: #link" data-src="#rrcbridge"  data-thumb="#rrcbridge-thumb"  position="-2.7 -0.2 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#ex1"        data-thumb="#ex1-thumb"        position="-0.9 -0.2 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#ex2"        data-thumb="#ex2-thumb"        position=" 0.9 -0.2 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#ex3"        data-thumb="#ex3-thumb"        position=" 2.7 -0.2 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#rrcbridge"  data-thumb="#rrcbridge-thumb"  data-label="RRC BRIDGE"   position="-2.7 -0.2 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#ex1"        data-thumb="#ex1-thumb"        data-label="EXTERIOR I"   position="-0.9 -0.2 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#ex2"        data-thumb="#ex2-thumb"        data-label="EXTERIOR II"  position=" 0.9 -0.2 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#ex3"        data-thumb="#ex3-thumb"        data-label="EXTERIOR III" position=" 2.7 -0.2 -5"></a-entity>
       <!-- Row 3 (3 items, centred) -->
-      <a-entity template="src: #link" data-src="#xmasbar"    data-thumb="#xmasbar-thumb"    position="-1.8 -2.0 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#toolroom"   data-thumb="#toolroom-thumb"   position=" 0.0 -2.0 -5"></a-entity>
-      <a-entity template="src: #link" data-src="#fifth"      data-thumb="#fifth-thumb"      position=" 1.8 -2.0 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#xmasbar"    data-thumb="#xmasbar-thumb"    data-label="XMAS BAR"     position="-1.8 -2.0 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#toolroom"   data-thumb="#toolroom-thumb"   data-label="TOOL ROOM"    position=" 0.0 -2.0 -5"></a-entity>
+      <a-entity template="src: #link" data-src="#fifth"      data-thumb="#fifth-thumb"      data-label="FIFTH"        position=" 1.8 -2.0 -5"></a-entity>
 
-      <!-- Mouse cursor for direct clicking (no gaze alignment needed on desktop) -->
-      <a-entity id="mouse-cursor"
-        cursor="rayOrigin: mouse"
-        raycaster="objects: .link; far: 100">
+      <!--
+        Prev / Next navigation arrows.
+        Large hit areas for easy gaze targeting in WebXR.
+        Positioned either side of the grid at mid-row height.
+      -->
+      <a-entity position="-4.5 0.7 -5">
+        <a-plane material="shader: flat; color: #333333" width="1.24" height="0.58" position="0 0 -0.01"></a-plane>
+        <a-plane class="hotspot" id="prev-btn"
+          material="shader: flat; color: #0f0f0f"
+          width="1.2" height="0.54"
+          event-set__1="_event: mouseenter; scale: 1.06 1.06 1"
+          event-set__2="_event: mouseleave; scale: 1 1 1">
+        </a-plane>
+        <a-text value="PREV" color="#aaaaaa" align="center" width="1.4" position="0 0.07 0.01" wrap-count="6"></a-text>
+        <a-text value="← LOOK LEFT" color="#444444" align="center" width="1.2" wrap-count="12" position="0 -0.12 0.01"></a-text>
       </a-entity>
 
-      <!-- Camera rig carries the mouse-parallax drift -->
+      <a-entity position="4.5 0.7 -5">
+        <a-plane material="shader: flat; color: #333333" width="1.24" height="0.58" position="0 0 -0.01"></a-plane>
+        <a-plane class="hotspot" id="next-btn"
+          material="shader: flat; color: #0f0f0f"
+          width="1.2" height="0.54"
+          event-set__1="_event: mouseenter; scale: 1.06 1.06 1"
+          event-set__2="_event: mouseleave; scale: 1 1 1">
+        </a-plane>
+        <a-text value="NEXT" color="#aaaaaa" align="center" width="1.4" position="0 0.07 0.01" wrap-count="6"></a-text>
+        <a-text value="LOOK RIGHT →" color="#444444" align="center" width="1.2" wrap-count="12" position="0 -0.12 0.01"></a-text>
+      </a-entity>
+
+      <!-- Mouse cursor — desktop direct click, no gaze alignment needed -->
+      <a-entity id="mouse-cursor"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .link, .hotspot; far: 100">
+      </a-entity>
+
+      <!-- Camera rig carries mouse-parallax -->
       <a-entity id="camera-rig" mouse-parallax>
         <a-entity camera look-controls>
-          <!-- Gaze cursor for VR -->
+          <!-- Gaze cursor for WebXR / VR headsets -->
           <a-cursor id="cursor"
             animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
             event-set__1="_event: mouseenter; color: white"
             event-set__2="_event: mouseleave; color: #555555"
             color="#555555"
-            raycaster="objects: .link"></a-cursor>
+            raycaster="objects: .link, .hotspot"
+            fuse="true" fuse-timeout="1500">
+          </a-cursor>
         </a-entity>
       </a-entity>
     </a-scene>
 
     <!-- ── Footer ── -->
     <div id="ui-footer">
-      <span>Click a thumbnail or look &amp; click — drag to explore</span>
-      <span>11 environments</span>
+      <span>Click or look &amp; hold to select</span>
+      <span id="current-scene">SYMPHONIE I</span>
+      <span>← → keys to navigate</span>
     </div>
 
-    <!-- ── About Modal ── -->
-    <div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
-      <div id="modal">
-        <div class="modal-header">
-          <span class="modal-title" id="modal-title-text">About BSD XR</span>
-          <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    <!-- ── Controls Modal ── -->
+    <div id="controls-overlay" role="dialog" aria-modal="true">
+      <div id="controls-modal">
+        <div class="modal-header" style="border-color: #3f0f0f;">
+          <span class="modal-title" style="color:#dc2626;">Controls</span>
+          <button class="modal-close" id="controls-close" aria-label="Close">✕</button>
         </div>
         <div class="modal-body">
 
           <div class="modal-section">
-            <div class="modal-eyebrow">Who we are</div>
-            <div class="modal-lead">We build what's next.</div>
-            <p>
-              Bit Space Development Ltd. is a Winnipeg-based immersive technology studio.
-              Since 2015 we've been designing and building XR experiences for enterprise,
-              education, and entertainment — from 360° virtual tours to full mixed-reality
-              training simulations.
-            </p>
+            <div class="modal-eyebrow" style="color:#dc2626;">Desktop / Mouse</div>
+            <table style="width:100%; border-collapse:collapse;">
+              <tr><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#e5e5e5; font-size:11px; letter-spacing:.08em; width:45%;">Click thumbnail</td><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#666; font-size:11px; letter-spacing:.08em;">Load that 360° environment</td></tr>
+              <tr><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#e5e5e5; font-size:11px; letter-spacing:.08em;">Click &amp; drag</td><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#666; font-size:11px; letter-spacing:.08em;">Look around the scene</td></tr>
+              <tr><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#e5e5e5; font-size:11px; letter-spacing:.08em;">← → Arrow keys</td><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#666; font-size:11px; letter-spacing:.08em;">Step through all environments</td></tr>
+              <tr><td style="padding:7px 0; color:#e5e5e5; font-size:11px; letter-spacing:.08em;">PREV / NEXT buttons</td><td style="padding:7px 0; color:#666; font-size:11px; letter-spacing:.08em;">Navigate sequentially (click)</td></tr>
+            </table>
           </div>
 
-          <hr class="modal-rule">
+          <hr class="modal-rule" style="border-color:#2a0a0a;">
 
+          <div class="modal-section">
+            <div class="modal-eyebrow" style="color:#dc2626;">VR Headset / WebXR</div>
+            <table style="width:100%; border-collapse:collapse;">
+              <tr><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#e5e5e5; font-size:11px; letter-spacing:.08em; width:45%;">Look at thumbnail</td><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#666; font-size:11px; letter-spacing:.08em;">Hold gaze for 1.5 s to select</td></tr>
+              <tr><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#e5e5e5; font-size:11px; letter-spacing:.08em;">Look at PREV / NEXT</td><td style="padding:7px 0; border-bottom:1px solid #1a1a1a; color:#666; font-size:11px; letter-spacing:.08em;">Hold gaze to step through</td></tr>
+              <tr><td style="padding:7px 0; color:#e5e5e5; font-size:11px; letter-spacing:.08em;">Move your head</td><td style="padding:7px 0; color:#666; font-size:11px; letter-spacing:.08em;">Look around the 360° scene</td></tr>
+            </table>
+          </div>
+
+          <hr class="modal-rule" style="border-color:#2a0a0a;">
+
+          <div class="modal-section">
+            <div class="modal-eyebrow" style="color:#dc2626;">Active environment</div>
+            <p>The currently loaded environment is highlighted with a <span style="color:#1b4fd8; font-weight:700;">blue border</span> on its thumbnail. The name is shown in the bottom centre of the screen.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ── About Modal ── -->
+    <div id="modal-overlay" role="dialog" aria-modal="true">
+      <div id="modal">
+        <div class="modal-header">
+          <span class="modal-title">About BSD XR</span>
+          <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-section">
+            <div class="modal-eyebrow">Who we are</div>
+            <div class="modal-lead">We build what's next.</div>
+            <p>Bit Space Development Ltd. is a Winnipeg-based immersive technology studio.
+            Since 2015 we've been designing and building XR experiences for enterprise,
+            education, and entertainment — from 360° virtual tours to full mixed-reality
+            training simulations.</p>
+          </div>
+          <hr class="modal-rule">
           <div class="modal-section">
             <div class="modal-eyebrow">What we build</div>
             <div class="modal-tags">
@@ -399,48 +413,119 @@
               <span class="modal-tag">Interactive Installations</span>
             </div>
           </div>
-
           <hr class="modal-rule">
-
           <div class="modal-section">
             <div class="modal-eyebrow">Work with us</div>
-            <p>
-              Whether you're exploring what's possible or ready to build —
-              we want to hear about your project.
-            </p>
+            <p>Whether you're exploring what's possible or ready to build — we want to hear about your project.</p>
             <div class="modal-actions">
-              <a href="https://bsdxr.com" target="_blank" class="cta-button">Book a Demo</a>
+              <a href="https://bsdxr.com/contact" target="_blank" class="cta-button">Book a Demo</a>
               <a href="https://bsdxr.com" target="_blank" class="nav-link">Visit bsdxr.com →</a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
 
     <script>
-      /* Modal open / close */
-      var overlay = document.getElementById('modal-overlay');
+      /* ── Panorama sequence ── */
+      var panoramas = [
+        { src: '#symphonie1', label: 'SYMPHONIE I'   },
+        { src: '#symphonie2', label: 'SYMPHONIE II'  },
+        { src: '#engagement', label: 'ENGAGEMENT'    },
+        { src: '#stn',        label: 'STN'           },
+        { src: '#rrcbridge',  label: 'RRC BRIDGE'    },
+        { src: '#ex1',        label: 'EXTERIOR I'    },
+        { src: '#ex2',        label: 'EXTERIOR II'   },
+        { src: '#ex3',        label: 'EXTERIOR III'  },
+        { src: '#xmasbar',    label: 'XMAS BAR'      },
+        { src: '#toolroom',   label: 'TOOL ROOM'     },
+        { src: '#fifth',      label: 'FIFTH'         }
+      ];
+      var currentIndex = 0;
 
-      document.getElementById('about-trigger').addEventListener('click', function () {
-        overlay.classList.add('open');
-      });
-      document.getElementById('modal-close').addEventListener('click', function () {
-        overlay.classList.remove('open');
-      });
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) overlay.classList.remove('open');
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') overlay.classList.remove('open');
-      });
+      function updateActiveIndicator(src) {
+        document.querySelectorAll('.thumb-border').forEach(function (b) {
+          b.setAttribute('material', 'opacity', 0);
+        });
+        var active = document.querySelector('.thumb-border[data-pano="' + src + '"]');
+        if (active) active.setAttribute('material', 'opacity', 1);
+      }
 
-      /* Refresh mouse-cursor raycaster after templates finish rendering */
+      function goToIndex(i) {
+        currentIndex = ((i % panoramas.length) + panoramas.length) % panoramas.length;
+        var pano = panoramas[currentIndex];
+        var sky  = document.querySelector('#image-360');
+        sky.emit('set-image-fade');
+        setTimeout(function () {
+          sky.setAttribute('material', 'src', pano.src);
+        }, 300);
+        updateActiveIndicator(pano.src);
+        var label = document.getElementById('current-scene');
+        label.style.opacity = '0';
+        setTimeout(function () {
+          label.textContent  = pano.label;
+          label.style.opacity = '1';
+        }, 200);
+      }
+
+      /* ── Scene ready ── */
       document.querySelector('a-scene').addEventListener('loaded', function () {
         setTimeout(function () {
-          var mc = document.querySelector('#mouse-cursor');
-          if (mc && mc.components.raycaster) mc.components.raycaster.refreshObjects();
+          /* Refresh raycasters after templates have rendered */
+          ['#cursor', '#mouse-cursor'].forEach(function (sel) {
+            var el = document.querySelector(sel);
+            if (el && el.components.raycaster) el.components.raycaster.refreshObjects();
+          });
+          /* Mark initial active thumbnail */
+          updateActiveIndicator(panoramas[0].src);
         }, 800);
+      });
+
+      /* ── Thumbnail click — sync currentIndex and label ── */
+      document.querySelector('a-scene').addEventListener('click', function (e) {
+        var pano = e.target.getAttribute('data-pano');
+        if (!pano) return;
+        var idx = panoramas.findIndex(function (p) { return p.src === pano; });
+        if (idx < 0) return;
+        currentIndex = idx;
+        updateActiveIndicator(pano);
+        var label = document.getElementById('current-scene');
+        label.style.opacity = '0';
+        setTimeout(function () {
+          label.textContent  = panoramas[idx].label;
+          label.style.opacity = '1';
+        }, 200);
+      });
+
+      /* ── Prev / Next buttons ── */
+      document.querySelector('a-scene').addEventListener('loaded', function () {
+        document.getElementById('prev-btn').addEventListener('click', function () { goToIndex(currentIndex - 1); });
+        document.getElementById('next-btn').addEventListener('click', function () { goToIndex(currentIndex + 1); });
+      });
+
+      /* ── Keyboard navigation ── */
+      document.addEventListener('keydown', function (e) {
+        if (document.getElementById('modal-overlay').classList.contains('open')) return;
+        if (e.key === 'ArrowLeft')  goToIndex(currentIndex - 1);
+        if (e.key === 'ArrowRight') goToIndex(currentIndex + 1);
+      });
+
+      /* ── Controls Modal ── */
+      var controlsOverlay = document.getElementById('controls-overlay');
+      document.getElementById('controls-trigger').addEventListener('click', function () { controlsOverlay.classList.add('open'); });
+      document.getElementById('controls-close')  .addEventListener('click', function () { controlsOverlay.classList.remove('open'); });
+      controlsOverlay.addEventListener('click', function (e) { if (e.target === controlsOverlay) controlsOverlay.classList.remove('open'); });
+
+      /* ── About Modal ── */
+      var overlay = document.getElementById('modal-overlay');
+      document.getElementById('about-trigger').addEventListener('click', function () { overlay.classList.add('open');    });
+      document.getElementById('modal-close')  .addEventListener('click', function () { overlay.classList.remove('open'); });
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) overlay.classList.remove('open'); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          overlay.classList.remove('open');
+          controlsOverlay.classList.remove('open');
+        }
       });
     </script>
 
